@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рашен ИЖС — Всё, что нужно знать перед строительством дома</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --bg2: #161921;
+      --bg3: #1e2330;
+      --accent: #e8a045;
+      --accent2: #c47d28;
+      --text: #e8e8e8;
+      --text2: #a0a8b8;
+      --green: #4caf80;
+      --red: #e05555;
+      --border: rgba(255,255,255,0.07);
+      --card: rgba(255,255,255,0.04);
+      --shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:100;
+      background: rgba(15,17,23,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-size: 1.1rem; font-weight: 700; color: var(--accent);
+      text-decoration: none; letter-spacing: 0.5px;
+    }
+    .nav-links {
+      display: flex; gap: 4px; list-style: none;
+    }
+    .nav-links a {
+      color: var(--text2); text-decoration: none; font-size: 0.85rem;
+      padding: 6px 12px; border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); background: rgba(232,160,69,0.08); }
+    .nav-cta {
+      background: var(--accent); color: #111 !important;
+      font-weight: 600; border-radius: 10px !important;
+    }
+    .nav-cta:hover { background: var(--accent2) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,160,69,0.08) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 80% 80%, rgba(76,175,128,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,160,69,0.1); border: 1px solid rgba(232,160,69,0.25);
+      color: var(--accent); padding: 6px 16px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text2); max-width: 620px;
+      margin: 0 auto 40px;
+    }
+    .hero-btns {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 14px;
+      font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent); color: #111;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.06); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 60px;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2rem; font-weight: 800; color: var(--accent);
+      display: block; line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text2); margin-top: 4px; }
+
+    /* SECTIONS */
+    section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      color: var(--accent); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.5px;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-desc {
+      color: var(--text2); font-size: 1.05rem;
+      max-width: 620px; margin-bottom: 48px;
+    }
+
+    /* CHAPTERS GRID */
+    .chapters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .chapter-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .chapter-card::before {
+      content: '';
+      position: absolute; top:0; left:0; right:0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .chapter-card:hover {
+      background: rgba(232,160,69,0.05);
+      border-color: rgba(232,160,69,0.3);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .chapter-card:hover::before { opacity: 1; }
+    .chapter-icon {
+      font-size: 2rem; margin-bottom: 16px; display: block;
+    }
+    .chapter-num {
+      font-size: 0.75rem; font-weight: 700; color: var(--accent);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .chapter-card h3 {
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .chapter-card p {
+      color: var(--text2); font-size: 0.9rem; line-height: 1.6;
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px; background: var(--border);
+      margin: 0 auto; max-width: 1100px;
+    }
+
+    /* TOOLS SECTION */
+    .tools-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .tab-btn {
+      padding: 10px 20px; border-radius: 12px;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--border);
+      background: var(--card); color: var(--text2);
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--accent); color: #111;
+      border-color: var(--accent);
+    }
+    .tab-btn:hover:not(.active) {
+      border-color: rgba(232,160,69,0.4);
+      color: var(--accent);
+    }
+    .tool-panel { display: none; }
+    .tool-panel.active { display: block; animation: fadeIn 0.3s; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform:none; } }
+
+    /* RELIABILITY CALCULATOR */
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 340px; gap: 28px;
+    }
+    .calc-category {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px; margin-bottom: 16px;
+    }
+    .calc-category h4 {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 1rem; margin-bottom: 20px;
+    }
+    .max-badge {
+      background: rgba(232,160,69,0.1); color: var(--accent);
+      padding: 3px 10px; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .calc-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .calc-item:last-child { border-bottom: none; }
+    .calc-item-label { font-size: 0.88rem; color: var(--text2); flex: 1; padding-right: 16px; }
+    .calc-item-pts { font-size: 0.75rem; color: var(--accent); font-weight: 600; }
+    .calc-item-check {
+      width: 44px; height: 24px; border-radius: 100px;
+      background: rgba(255,255,255,0.1); border: 1px solid var(--border);
+      cursor: pointer; position: relative; transition: all 0.3s;
+      flex-shrink: 0; margin-left: 16px;
+    }
+    .calc-item-check::after {
+      content: ''; position: absolute;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--text2); top: 2px; left: 2px;
+      transition: all 0.3s;
+    }
+    .calc-item-check.checked {
+      background: rgba(232,160,69,0.2); border-color: var(--accent);
+    }
+    .calc-item-check.checked::after {
+      background: var(--accent); left: 22px;
+    }
+
+    /* SCORE PANEL */
+    .score-panel {
+      position: sticky; top: 80px;
+    }
+    .score-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px; text-align: center;
+    }
+    .score-circle {
+      width: 140px; height: 140px; margin: 0 auto 20px;
+      position: relative;
+    }
+    .score-circle svg { width:100%; height:100%; transform: rotate(-90deg); }
+    .score-circle-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 10; }
+    .score-circle-fill {
+      fill: none; stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 377;
+      stroke-dashoffset: 377;
+      transition: stroke-dashoffset 0.6s ease, stroke 0.4s;
+    }
+    .score-number {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .score-num { font-size: 2.4rem; font-weight: 800; color: var(--text); }
+    .score-max { font-size: 0.75rem; color: var(--text2); }
+    .score-label {
+      font-size: 1rem; font-weight: 700; margin-bottom: 8px;
+    }
+    .score-desc {
+      font-size: 0.85rem; color: var(--text2); line-height: 1.5;
+    }
+    .score-bars { margin-top: 20px; }
+    .score-bar-item {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 10px; font-size: 0.8rem;
+    }
+    .score-bar-label { color: var(--text2); width: 140px; text-align: left; flex-shrink: 0; }
+    .score-bar-track {
+      flex: 1; height: 6px; border-radius: 3px;
+      background: rgba(255,255,255,0.06); overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 100%; border-radius: 3px;
+      background: var(--accent);
+      transition: width 0.4s ease;
+    }
+    .score-bar-pts {
+      color: var(--accent); font-weight: 700;
+      width: 40px; text-align: right; flex-shrink: 0;
+    }
+
+    /* BUDGET CALCULATOR */
+    .budget-form {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .input-group { display: flex; flex-direction: column; gap: 8px; }
+    .input-group label {
+      font-size: 0.85rem; color: var(--text2); font-weight: 500;
+    }
+    .input-group input, .input-group select {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 16px;
+      color: var(--text); font-size: 0.95rem;
+      transition: all 0.2s; width: 100%;
+    }
+    .input-group input:focus, .input-group select:focus {
+      outline: none; border-color: var(--accent);
+      background: rgba(232,160,69,0.05);
+    }
+    .input-group select option { background: #1e2330; }
+    .budget-result {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px; margin-top: 24px;
+    }
+    .budget-result h4 { font-size: 1rem; margin-bottom: 20px; color: var(--text2); }
+    .budget-rows {}
+    .budget-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .budget-row:last-child { border-bottom: none; }
+    .budget-row-label { font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+    .budget-row-val { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+    .budget-total {
+      background: rgba(232,160,69,0.08); border: 1px solid rgba(232,160,69,0.2);
+      border-radius: 16px; padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 20px;
+    }
+    .budget-total-label { font-size: 1rem; font-weight: 700; }
+    .budget-total-val { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+    .budget-warning {
+      background: rgba(224,85,85,0.08); border: 1px solid rgba(224,85,85,0.2);
+      border-radius: 12px; padding: 14px 18px;
+      font-size: 0.85rem; color: #e08080; margin-top: 16px;
+      display: flex; gap: 10px;
+    }
+
+    /* CHECKLIST */
+    .checklist-categories {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .checklist-cat {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 24px;
+    }
+    .checklist-cat h4 {
+      font-size: 1rem; font-weight: 700; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .checklist-cat h4 span { font-size: 1.3rem; }
+    .checklist-progress {
+      height: 4px; border-radius: 2px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 16px; overflow: hidden;
+    }
+    .checklist-progress-fill {
+      height: 100%; border-radius: 2px;
+      background: var(--green);
+      transition: width 0.4s ease;
+    }
+    .checklist-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 8px 0; cursor: pointer; border-radius: 8px;
+      transition: all 0.2s; padding: 8px;
+      margin: 0 -8px;
+    }
+    .checklist-item:hover { background: rgba(255,255,255,0.03); }
+    .checklist-checkbox {
+      width: 20px; height: 20px; border-radius: 6px;
+      border: 2px solid rgba(255,255,255,0.2);
+      flex-shrink: 0; margin-top: 2px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .checklist-item.checked .checklist-checkbox {
+      background: var(--green); border-color: var(--green);
+    }
+    .checklist-checkbox::after {
+      content: '✓'; color: white; font-size: 0.7rem;
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .checklist-item.checked .checklist-checkbox::after { opacity: 1; }
+    .checklist-item span {
+      font-size: 0.88rem; color: var(--text2); line-height: 1.4;
+      transition: all 0.2s;
+    }
+    .checklist-item.checked span {
+      color: rgba(255,255,255,0.3);
+      text-decoration: line-through;
+    }
+    .checklist-summary {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 24px;
+      display: flex; align-items: center; gap: 20px;
+      margin-top: 24px;
+    }
+    .checklist-total-ring {
+      width: 80px; height: 80px; flex-shrink: 0;
+      position: relative;
+    }
+    .checklist-total-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .checklist-ring-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 8; }
+    .checklist-ring-fill {
+      fill: none; stroke: var(--green); stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 220;
+      stroke-dashoffset: 220;
+      transition: stroke-dashoffset 0.5s ease;
+    }
+    .checklist-ring-text {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .checklist-ring-num { font-size: 1.2rem; font-weight: 800; }
+    .checklist-ring-label { font-size: 0.65rem; color: var(--text2); }
+
+    /* QUIZ */
+    .quiz-container { max-width: 700px; margin: 0 auto; }
+    .quiz-progress-bar {
+      height: 4px; border-radius: 2px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 32px; overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%; background: var(--accent);
+      border-radius: 2px; transition: width 0.4s ease;
+    }
+    .quiz-question {
+      font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 24px; line-height: 1.4;
+    }
+    .quiz-options {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 28px;
+    }
+    .quiz-option {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px 20px;
+      cursor: pointer; font-size: 0.95rem;
+      transition: all 0.2s; display: flex;
+      align-items: center; gap: 12px;
+    }
+    .quiz-option:hover {
+      border-color: rgba(232,160,69,0.4);
+      background: rgba(232,160,69,0.05);
+    }
+    .quiz-option.selected {
+      border-color: var(--accent);
+      background: rgba(232,160,69,0.08);
+      color: var(--accent);
+    }
+    .quiz-option-dot {
+      width: 20px; height: 20px; border-radius: 50%;
+      border: 2px solid var(--border); flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .quiz-option.selected .quiz-option-dot {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    .quiz-nav {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .quiz-counter { color: var(--text2); font-size: 0.85rem; }
+    .quiz-result {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 24px; padding: 40px;
+      text-align: center; display: none;
+    }
+    .quiz-result.show { display: block; animation: fadeIn 0.4s; }
+    .quiz-result-icon { font-size: 4rem; margin-bottom: 20px; }
+    .quiz-result h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
+    .quiz-result p { color: var(--text2); max-width: 500px; margin: 0 auto 24px; line-height: 1.6; }
+    .quiz-result-tags {
+      display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .result-tag {
+      background: rgba(232,160,69,0.1); border: 1px solid rgba(232,160,69,0.2);
+      color: var(--accent); padding: 6px 14px; border-radius: 100px;
+      font-size: 0.82rem; font-weight: 600;
+    }
+
+    /* RED FLAGS */
+    .flags-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .flag-card {
+      background: rgba(224,85,85,0.04);
+      border: 1px solid rgba(224,85,85,0.15);
+      border-radius: 16px; padding: 20px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .flag-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .flag-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; color: #e08080; }
+    .flag-card p { font-size: 0.84rem; color: var(--text2); line-height: 1.5; }
+
+    /* REGRETS */
+    .regrets-list {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .regret-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+    }
+    .regret-header {
+      padding: 20px 24px; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.2s;
+    }
+    .regret-header:hover { background: rgba(255,255,255,0.03); }
+    .regret-header-left { display: flex; align-items: center; gap: 14px; }
+    .regret-num {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(232,160,69,0.1); border: 1px solid rgba(232,160,69,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: var(--accent); font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .regret-title { font-size: 1rem; font-weight: 700; }
+    .regret-arrow {
+      color: var(--text2); font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+    .regret-item.open .regret-arrow { transform: rotate(180deg); }
+    .regret-body {
+      height: 0; overflow: hidden;
+      transition: height 0.3s ease;
+    }
+    .regret-body-inner {
+      padding: 0 24px 24px;
+      font-size: 0.92rem; color: var(--text2); line-height: 1.7;
+    }
+
+    /* PMZh section */
+    .pmzh-compare {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .pmzh-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px;
+    }
+    .pmzh-card.pmzh { border-color: rgba(76,175,128,0.25); }
+    .pmzh-card.dacha { border-color: rgba(232,160,69,0.25); }
+    .pmzh-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 20px; }
+    .pmzh-card.pmzh h3 { color: var(--green); }
+    .pmzh-card.dacha h3 { color: var(--accent); }
+    .pmzh-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .pmzh-item:last-child { border-bottom: none; }
+    .pmzh-bullet {
+      width: 6px; height: 6px; border-radius: 50%;
+      margin-top: 8px; flex-shrink: 0;
+    }
+    .pmzh-card.pmzh .pmzh-bullet { background: var(--green); }
+    .pmzh-card.dacha .pmzh-bullet { background: var(--accent); }
+    .pmzh-item-content {}
+    .pmzh-item-title { font-size: 0.9rem; font-weight: 700; }
+    .pmzh-item-desc { font-size: 0.82rem; color: var(--text2); margin-top: 2px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 1.4rem; font-weight: 800; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .footer-desc {
+      color: var(--text2); font-size: 0.9rem;
+      max-width: 500px; margin: 0 auto 24px;
+    }
+    .footer-copy { color: rgba(255,255,255,0.2); font-size: 0.8rem; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .score-panel { position: static; }
+      .budget-form { grid-template-columns: 1fr; }
+      .pmzh-compare { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .chapters-grid { grid-template-columns: 1fr; }
+    }
+
+    /* LEAD CAPTURE MODAL */
+    .lead-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1100;
+      background: rgba(0,0,0,0.78); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .lead-overlay.open { display: flex; }
+    .lead-box {
+      background: var(--bg2); border: 1px solid rgba(232,160,69,0.25);
+      border-radius: 20px; max-width: 480px; width: 100%;
+      padding: 32px; box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+    .lead-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .lead-box h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .lead-box p { color: var(--text2); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+    .lead-field {
+      width: 100%; padding: 12px 16px;
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: 0.95rem;
+      outline: none; transition: border-color 0.2s; margin-bottom: 10px;
+    }
+    .lead-field:focus { border-color: var(--accent); }
+    .lead-field::placeholder { color: var(--text2); }
+    .lead-timing-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .lead-timing-btn {
+      flex: 1; min-width: 120px; padding: 10px 8px; text-align: center;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text2); font-size: 0.82rem; cursor: pointer; transition: all 0.2s;
+    }
+    .lead-timing-btn.active { background: rgba(232,160,69,0.15); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+    .lead-submit-btn {
+      width: 100%; padding: 14px; background: var(--accent); color: #1a1200;
+      border: none; border-radius: 12px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; margin-top: 4px;
+    }
+    .lead-submit-btn:hover { background: #f0b055; }
+    .lead-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .lead-skip { text-align: center; margin-top: 10px; }
+    .lead-skip a { color: var(--text2); font-size: 0.82rem; cursor: pointer; text-decoration: underline; }
+    .lead-success { text-align: center; }
+    .lead-success .success-icon { font-size: 3rem; margin-bottom: 12px; }
+    .lead-success h3 { margin-bottom: 8px; }
+    .lead-success p { margin-bottom: 20px; }
+    .btn-tg {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; background: #2AABEE; color: #fff;
+      border-radius: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-tg:hover { background: #1a9bd8; }
+
+    /* IN-TOOL LEAD BLOCKS */
+    .tool-lead-block {
+      margin-top: 20px; padding: 20px 24px;
+      background: rgba(232,160,69,0.06); border: 1px solid rgba(232,160,69,0.2);
+      border-radius: 14px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .tool-lead-block p { color: var(--text2); font-size: 0.88rem; flex: 1; min-width: 200px; }
+    .tool-lead-block p strong { color: var(--text); }
+    .btn-lead-trigger {
+      padding: 10px 20px; background: rgba(232,160,69,0.15); border: 1px solid var(--accent);
+      color: var(--accent); border-radius: 10px; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer; white-space: nowrap; transition: all 0.2s;
+    }
+    .btn-lead-trigger:hover { background: rgba(232,160,69,0.25); }
+
+    /* AUTHOR SECTION */
+    .author-section { padding: 80px 0; }
+    .author-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+    }
+    @media (max-width: 768px) { .author-grid { grid-template-columns: 1fr; } }
+    .author-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 20px;
+    }
+    .author-photo-wrap {
+      display: flex; align-items: center; gap: 20px;
+    }
+    .author-photo-wrap img {
+      width: 90px; height: 90px; border-radius: 50%;
+      object-fit: cover; border: 3px solid var(--accent); flex-shrink: 0;
+    }
+    .author-name { font-size: 1.3rem; font-weight: 700; }
+    .author-role { color: var(--accent); font-size: 0.88rem; font-weight: 600; margin-top: 3px; }
+    .author-bio { color: var(--text2); font-size: 0.9rem; line-height: 1.7; }
+    .author-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .author-stat-item {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .author-stat-item .stat-emoji { font-size: 1.1rem; }
+    .author-stat-item .stat-text { font-size: 0.82rem; color: var(--text2); line-height: 1.4; }
+    .author-stat-item .stat-text strong { color: var(--text); display: block; }
+    .author-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .author-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text2); font-size: 0.82rem; text-decoration: none; transition: all 0.2s;
+    }
+    .author-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* VIP FORM */
+    .vip-card {
+      background: linear-gradient(135deg, rgba(232,160,69,0.08), rgba(196,125,40,0.04));
+      border: 1px solid rgba(232,160,69,0.3); border-radius: 20px; padding: 32px;
+    }
+    .vip-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(232,160,69,0.15); border: 1px solid rgba(232,160,69,0.3);
+      border-radius: 20px; padding: 4px 12px; font-size: 0.78rem; color: var(--accent);
+      font-weight: 700; letter-spacing: 0.5px; margin-bottom: 14px;
+    }
+    .vip-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+    .vip-card p { color: var(--text2); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+    .vip-field {
+      width: 100%; padding: 12px 16px; margin-bottom: 10px;
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: 0.9rem; outline: none;
+      transition: border-color 0.2s; font-family: inherit;
+    }
+    .vip-field:focus { border-color: var(--accent); }
+    .vip-field::placeholder { color: var(--text2); }
+    textarea.vip-field { resize: vertical; min-height: 80px; }
+    .vip-submit {
+      width: 100%; padding: 14px; background: var(--accent); color: #1a1200;
+      border: none; border-radius: 12px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; animation: pulse 3s ease infinite;
+    }
+    .vip-submit:hover { background: #f0b055; animation: none; }
+    .vip-note { color: var(--text2); font-size: 0.78rem; text-align: center; margin-top: 10px; }
+
+    /* CONSULT SECTION */
+    .consult-section { padding: 80px 0; }
+    .consult-card {
+      background: linear-gradient(135deg, rgba(76,175,128,0.08), rgba(76,175,128,0.03));
+      border: 1px solid rgba(76,175,128,0.2); border-radius: 24px; padding: 48px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    @media (max-width: 768px) { .consult-card { grid-template-columns: 1fr; padding: 28px; } }
+    .consult-left h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 14px; }
+    .consult-left p { color: var(--text2); line-height: 1.7; margin-bottom: 20px; }
+    .consult-perks { display: flex; flex-direction: column; gap: 10px; }
+    .consult-perk { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+    .consult-perk::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .consult-form { display: flex; flex-direction: column; gap: 10px; }
+    .consult-field {
+      padding: 12px 16px; background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: 0.9rem; outline: none;
+      transition: border-color 0.2s; font-family: inherit;
+    }
+    .consult-field:focus { border-color: var(--green); }
+    .consult-field::placeholder { color: var(--text2); }
+    .consult-submit {
+      padding: 14px; background: var(--green); color: #0a1f14;
+      border: none; border-radius: 12px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .consult-submit:hover { filter: brightness(1.1); }
+
+    /* Pulse animation for CTA */
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(232,160,69,0.3); }
+      50% { box-shadow: 0 0 0 12px rgba(232,160,69,0); }
+    }
+    .btn-primary { animation: pulse 3s ease infinite; }
+    .btn-primary:hover { animation: none; }
+
+    /* CHAPTER READ BUTTON */
+    .chapter-card { cursor: default; position: relative; }
+    .chapter-read-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 14px; padding: 7px 16px;
+      background: rgba(232,160,69,0.12); border: 1px solid rgba(232,160,69,0.3);
+      color: var(--accent); border-radius: 8px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .chapter-read-btn:hover { background: rgba(232,160,69,0.22); border-color: var(--accent); }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 20px; max-width: 740px; width: 100%;
+      max-height: 88vh; display: flex; flex-direction: column;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+    .modal-head {
+      padding: 24px 28px 16px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    }
+    .modal-head-info { display: flex; flex-direction: column; gap: 4px; }
+    .modal-tag { font-size: 0.78rem; color: var(--accent); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .modal-title { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+    .modal-close {
+      background: none; border: none; color: var(--text2); font-size: 1.6rem;
+      cursor: pointer; line-height: 1; padding: 0 4px; flex-shrink: 0;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal-body {
+      padding: 24px 28px; overflow-y: auto; flex: 1;
+      font-size: 0.95rem; line-height: 1.85; color: var(--text);
+    }
+    .modal-body h3 { font-size: 1rem; color: var(--accent); margin: 20px 0 8px; font-weight: 700; }
+    .modal-body p { margin-bottom: 14px; color: #d0d8e8; }
+    .modal-body ul { padding-left: 20px; margin-bottom: 14px; }
+    .modal-body ul li { margin-bottom: 6px; color: #d0d8e8; }
+    .modal-body blockquote {
+      border-left: 3px solid var(--accent); padding: 10px 16px;
+      background: rgba(232,160,69,0.06); border-radius: 0 8px 8px 0;
+      margin: 16px 0; font-style: italic; color: var(--text2);
+    }
+    .modal-foot {
+      padding: 16px 28px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .modal-nav { display: flex; gap: 8px; }
+    .modal-nav-btn {
+      padding: 8px 18px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--card); color: var(--text2); font-size: 0.85rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .modal-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .modal-nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+    /* DOWNLOAD SECTION */
+    .download-section {
+      background: linear-gradient(135deg, rgba(232,160,69,0.1) 0%, rgba(196,125,40,0.05) 100%);
+      border: 1px solid rgba(232,160,69,0.2);
+      border-radius: 20px; padding: 40px; text-align: center; margin-top: 48px;
+    }
+    .download-section h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+    .download-section p { color: var(--text2); margin-bottom: 24px; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px; background: var(--accent); color: #1a1200;
+      border-radius: 12px; font-weight: 700; font-size: 1rem;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-download:hover { background: #f0b055; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,160,69,0.4); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">⌂ Рашен ИЖС</a>
+  <ul class="nav-links">
+    <li><a href="#chapters">Главы</a></li>
+    <li><a href="#tools">Инструменты</a></li>
+    <li><a href="#flags">Красные флаги</a></li>
+    <li><a href="#regrets">5 сожалений</a></li>
+    <li><a href="#tools" class="nav-cta">Проверить подрядчика</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">📖 Кирилл Макухин · 2025</div>
+  <h1>Всё о строительстве дома — <span>честно и без иллюзий</span></h1>
+  <p>Интерактивный гид по книге «Рашен ИЖС». Проверьте подрядчика, рассчитайте реальный бюджет и узнайте, какой дом подходит именно вам.</p>
+  <div class="hero-btns">
+    <a href="#tools" class="btn btn-primary">⚡ Открыть инструменты</a>
+    <a href="#chapters" class="btn btn-ghost">📚 Читать главы</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">8</span><div class="stat-label">Глав книги</div></div>
+    <div class="stat"><span class="stat-num">100</span><div class="stat-label">Балльный индекс надёжности</div></div>
+    <div class="stat"><span class="stat-num">20+</span><div class="stat-label">Лет опыта автора</div></div>
+    <div class="stat"><span class="stat-num">5</span><div class="stat-label">Главных сожалений</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CHAPTERS -->
+<section id="chapters">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">📖 Содержание книги</div>
+      <h2>8 глав о реальном ИЖС</h2>
+      <p class="section-desc">Честная книга о современном рынке частного домостроения в России. Без рекламы — с опытом сотен реальных проектов.</p>
+    </div>
+    <div class="chapters-grid">
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">📖</div>
+        <div class="chapter-num">Введение</div>
+        <h3>Рынок ИЖС — это отдельная вселенная</h3>
+        <p>За двадцать лет в этой сфере автор видел всё: как рождаются компании «на волне» и исчезают через год. Дом — это не квадратные метры. Это про людей.</p>
+        <button class="chapter-read-btn" onclick="openChapter(0)">📖 Читать главу</button>
+      </div>
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">🚲</div>
+        <div class="chapter-num">Глава 1</div>
+        <h3>Рынок ИЖС сегодня</h3>
+        <p>Рынок — как велосипед в горку. Льготная ипотека, эскроу-счета и их последствия. Почему рынок притормозил и стал честнее. Кто выжил после «чистки».</p>
+        <button class="chapter-read-btn" onclick="openChapter(1)">📖 Читать главу</button>
+      </div>
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">⚠️</div>
+        <div class="chapter-num">Глава 2</div>
+        <h3>Ошибки и иллюзии в стройке</h3>
+        <p>Почему нельзя строить самостоятельно. Истории мошенников и инвест-проектов. Как не купить «дом из говна и палок» под видом дома мечты.</p>
+        <button class="chapter-read-btn" onclick="openChapter(2)">📖 Читать главу</button>
+      </div>
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">🔍</div>
+        <div class="chapter-num">Глава 3</div>
+        <h3>Как выбрать подрядчика</h3>
+        <p>Индекс надёжности по 100-балльной шкале. 6 категорий оценки. Перечень «красных меток». Чек-лист перед подписанием договора.</p>
+        <button class="chapter-read-btn" onclick="openChapter(3)">📖 Читать главу</button>
+      </div>
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">🏠</div>
+        <div class="chapter-num">Глава 4</div>
+        <h3>Вторичный рынок загородных домов</h3>
+        <p>Как покупать дом с умом. Технадзор против риэлтора. Простые маркеры плохого дома. Принцип честной покупки с техническим осмотром.</p>
+        <button class="chapter-read-btn" onclick="openChapter(4)">📖 Читать главу</button>
+      </div>
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">🏛️</div>
+        <div class="chapter-num">Глава 5</div>
+        <h3>Архитектура, планировка и жизнь</h3>
+        <p>Почему архитектор важнее подрядчика. Сценарии жизни в доме. Ландшафт и участок как продолжение дома. Первая инвестиция в спокойствие.</p>
+        <button class="chapter-read-btn" onclick="openChapter(5)">📖 Читать главу</button>
+      </div>
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">💰</div>
+        <div class="chapter-num">Глава 6</div>
+        <h3>Деньги, которых не видно</h3>
+        <p>Реальные затраты на дом, участок и благоустройство. Земля и коробка = только 30% общих вложений. Что скрывают маркетинговые «цены за квадрат».</p>
+        <button class="chapter-read-btn" onclick="openChapter(6)">📖 Читать главу</button>
+      </div>
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">😔</div>
+        <div class="chapter-num">Глава 7</div>
+        <h3>5 главных сожалений владельцев домов</h3>
+        <p>Бюджет. Этажность. Экономия на специалистах. Планировка и инженерия. Отсутствие проекта и вентиляции. Все ошибки можно не повторять.</p>
+        <button class="chapter-read-btn" onclick="openChapter(7)">📖 Читать главу</button>
+      </div>
+      <div class="chapter-card reveal">
+        <div class="chapter-icon">🌿</div>
+        <div class="chapter-num">Глава 8</div>
+        <h3>Постоянное проживание или дача?</h3>
+        <p>Честный ответ на вопрос «Зачем вам этот дом?». Разница между ПМЖ и домом выходного дня. Сценарии, отопление, материалы, инфраструктура.</p>
+        <button class="chapter-read-btn" onclick="openChapter(8)">📖 Читать главу</button>
+      </div>
+    </div>
+    <div class="download-section reveal">
+      <div style="font-size:3rem;margin-bottom:12px">📘</div>
+      <h3>Скачать книгу «Рашен ИЖС»</h3>
+      <p>Полная версия в PDF — читайте офлайн, делитесь с семьёй и возвращайтесь в любой момент.</p>
+      <button onclick="openLeadModal('pdf')" class="btn-download" style="border:none;cursor:pointer">⬇ Скачать PDF бесплатно</button>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER MODAL -->
+<div class="modal-overlay" id="chapterModal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-info">
+        <div class="modal-tag" id="modalTag"></div>
+        <div class="modal-title" id="modalTitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeChapter()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot">
+      <div class="modal-nav">
+        <button class="modal-nav-btn" id="modalPrev" onclick="prevChapter()">← Назад</button>
+        <button class="modal-nav-btn" id="modalNext" onclick="nextChapter()">Вперёд →</button>
+      </div>
+      <button onclick="openLeadModal('pdf')" class="chapter-read-btn" style="margin-top:0;border:none;cursor:pointer">⬇ Скачать PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">⚡ Интерактивные инструменты</div>
+      <h2>Практические инструменты</h2>
+      <p class="section-desc">Используйте инструменты из книги прямо сейчас. Оцените подрядчика, рассчитайте бюджет, составьте чек-лист.</p>
+    </div>
+    <div class="tools-tabs">
+      <button class="tab-btn active" data-tool="calc" onclick="switchTool('calc')">🔍 Индекс надёжности</button>
+      <button class="tab-btn" data-tool="budget" onclick="switchTool('budget')">💰 Калькулятор бюджета</button>
+      <button class="tab-btn" data-tool="checklist" onclick="switchTool('checklist')">✅ Чек-лист покупки</button>
+      <button class="tab-btn" data-tool="quiz" onclick="switchTool('quiz')">🌿 ПМЖ или дача?</button>
+    </div>
+
+    <!-- RELIABILITY CALCULATOR -->
+    <div class="tool-panel active" id="tool-calc">
+      <div class="calc-grid">
+        <div>
+          <div class="calc-category">
+            <h4>1. Юридическая чистота <span class="max-badge">25 баллов</span></h4>
+            <div class="calc-item" onclick="toggleItem(this, 10)">
+              <span class="calc-item-label">Нет долгов по налогам и сборам</span>
+              <span class="calc-item-pts">10 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Отсутствие свежих арбитражных споров как ответчика</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Прозрачные учредители, не «резиновые» директора</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Деятельность соответствует ОКВЭД, стаж не менее 5 лет</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+          </div>
+
+          <div class="calc-category">
+            <h4>2. Репутация и след в сети <span class="max-badge">20 баллов</span></h4>
+            <div class="calc-item" onclick="toggleItem(this, 10)">
+              <span class="calc-item-label">Реальные отзывы с фото/адресами объектов (не анонимные)</span>
+              <span class="calc-item-pts">10 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Публичные кейсы с адресами, датами, техническими параметрами</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Адекватная реакция на негатив: как отвечают и исправляют</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+          </div>
+
+          <div class="calc-category">
+            <h4>3. Производственная база <span class="max-badge">20 баллов</span></h4>
+            <div class="calc-item" onclick="toggleItem(this, 10)">
+              <span class="calc-item-label">Собственное/арендованное производство, склад, техника — можно посмотреть вживую</span>
+              <span class="calc-item-pts">10 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Стандарты: чек-листы, журналы работ, контроль качества, технадзор</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Типовые узлы, рабочая документация в наличии</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+          </div>
+
+          <div class="calc-category">
+            <h4>4. Финансовая модель <span class="max-badge">15 баллов</span></h4>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Прозрачная смета с расшифровкой материалов и работ</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Понятные этапы оплаты; нет «100% предоплаты за скидку»</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Эскроу-счёт или аккредитация в банках</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+          </div>
+
+          <div class="calc-category">
+            <h4>5. Команда <span class="max-badge">10 баллов</span></h4>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Постоянные бригады (не временные субподрядчики)</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Компетентные прорабы с 2–3 живыми объектами для показа</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+          </div>
+
+          <div class="calc-category">
+            <h4>6. Полевые доказательства <span class="max-badge">10 баллов</span></h4>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Готовность показать объект в любой стадии строительства</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+            <div class="calc-item" onclick="toggleItem(this, 5)">
+              <span class="calc-item-label">Контакты реальных клиентов для обратной связи</span>
+              <span class="calc-item-pts">5 пт</span>
+              <div class="calc-item-check"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="score-panel">
+          <div class="score-card">
+            <div class="score-circle">
+              <svg viewBox="0 0 140 140">
+                <circle class="score-circle-bg" cx="70" cy="70" r="60"/>
+                <circle class="score-circle-fill" id="scoreCircle" cx="70" cy="70" r="60"/>
+              </svg>
+              <div class="score-number">
+                <span class="score-num" id="scoreNum">0</span>
+                <span class="score-max">из 100</span>
+              </div>
+            </div>
+            <div class="score-label" id="scoreLabel">Начните проверку</div>
+            <div class="score-desc" id="scoreDesc">Отмечайте критерии слева, чтобы оценить надёжность подрядчика по методике книги.</div>
+
+            <div class="score-bars" style="margin-top:24px;">
+              <div class="score-bar-item">
+                <div class="score-bar-label">Юридическая чистота</div>
+                <div class="score-bar-track"><div class="score-bar-fill" id="bar0" style="width:0%"></div></div>
+                <div class="score-bar-pts" id="pts0">0/25</div>
+              </div>
+              <div class="score-bar-item">
+                <div class="score-bar-label">Репутация</div>
+                <div class="score-bar-track"><div class="score-bar-fill" id="bar1" style="width:0%"></div></div>
+                <div class="score-bar-pts" id="pts1">0/20</div>
+              </div>
+              <div class="score-bar-item">
+                <div class="score-bar-label">Производство</div>
+                <div class="score-bar-track"><div class="score-bar-fill" id="bar2" style="width:0%"></div></div>
+                <div class="score-bar-pts" id="pts2">0/20</div>
+              </div>
+              <div class="score-bar-item">
+                <div class="score-bar-label">Финансы</div>
+                <div class="score-bar-track"><div class="score-bar-fill" id="bar3" style="width:0%"></div></div>
+                <div class="score-bar-pts" id="pts3">0/15</div>
+              </div>
+              <div class="score-bar-item">
+                <div class="score-bar-label">Команда</div>
+                <div class="score-bar-track"><div class="score-bar-fill" id="bar4" style="width:0%"></div></div>
+                <div class="score-bar-pts" id="pts4">0/10</div>
+              </div>
+              <div class="score-bar-item">
+                <div class="score-bar-label">Полевые данные</div>
+                <div class="score-bar-track"><div class="score-bar-fill" id="bar5" style="width:0%"></div></div>
+                <div class="score-bar-pts" id="pts5">0/10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUDGET CALCULATOR -->
+    <div class="tool-panel" id="tool-budget">
+      <div class="budget-form">
+        <div class="input-group">
+          <label>Площадь дома (м²)</label>
+          <input type="number" id="area" value="120" min="50" max="500" oninput="calcBudget()">
+        </div>
+        <div class="input-group">
+          <label>Класс строительства</label>
+          <select id="quality" onchange="calcBudget()">
+            <option value="80">Эконом (от 80 тыс/м²)</option>
+            <option value="130" selected>Стандарт (от 130 тыс/м²)</option>
+            <option value="200">Комфорт (от 200 тыс/м²)</option>
+            <option value="350">Бизнес (от 350 тыс/м²)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Этажность</label>
+          <select id="floors" onchange="calcBudget()">
+            <option value="1">Одноэтажный</option>
+            <option value="2" selected>Двухэтажный</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Тип дома (назначение)</label>
+          <select id="purpose" onchange="calcBudget()">
+            <option value="pmzh" selected>Постоянное проживание (ПМЖ)</option>
+            <option value="dacha">Дача / выходного дня</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="budget-result">
+        <h4>📊 Реальная структура затрат (на основе книги)</h4>
+        <div class="budget-rows" id="budgetRows"></div>
+        <div class="budget-total">
+          <div class="budget-total-label">Итого (минимум)</div>
+          <div class="budget-total-val" id="budgetTotal">—</div>
+        </div>
+        <div class="budget-warning" id="budgetWarning">
+          <span>⚠️</span>
+          <span>Земля и коробка — лишь ~30% реальных вложений. Остальные 70% — то, что делает дом пригодным для жизни: инженерия, благоустройство, мебель, техника. Закладывайте резерв +30% от итоговой суммы.</span>
+        </div>
+        <div class="tool-lead-block" style="margin-top:16px">
+          <p><strong>Хотите получить этот расчёт на телефон?</strong><br>Пришлём PDF с вашими цифрами и списком скрытых расходов, о которых обычно забывают.</p>
+          <button class="btn-lead-trigger" onclick="openLeadModal('budget')">📥 Получить расчёт</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKLIST -->
+    <div class="tool-panel" id="tool-checklist">
+      <div class="checklist-categories" id="checklistGrid"></div>
+      <div class="checklist-summary">
+        <div class="checklist-total-ring">
+          <svg viewBox="0 0 80 80">
+            <circle class="checklist-ring-bg" cx="40" cy="40" r="35"/>
+            <circle class="checklist-ring-fill" id="checkRing" cx="40" cy="40" r="35"/>
+          </svg>
+          <div class="checklist-ring-text">
+            <span class="checklist-ring-num" id="checkNum">0%</span>
+            <span class="checklist-ring-label">готово</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:6px;">Прогресс проверки</div>
+          <div style="color:var(--text2);font-size:0.88rem;" id="checkSummary">Отметьте пункты, которые выполнены для вашего объекта.</div>
+        </div>
+      </div>
+      <div class="tool-lead-block" style="margin-top:20px">
+        <p><strong>Нужна помощь с проверкой?</strong><br>Если сложно разобраться самостоятельно — поможем пройти чек-лист вместе и оценить вашего подрядчика.</p>
+        <button class="btn-lead-trigger" onclick="openLeadModal('checklist')">🤝 Нужна помощь</button>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="tool-panel" id="tool-quiz">
+      <div class="quiz-container">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quizProgress" style="width:0%"></div>
+        </div>
+        <div id="quizContent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RED FLAGS -->
+<section id="flags">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">🚨 Красные метки</div>
+      <h2>Уходите, если слышите это</h2>
+      <p class="section-desc">Сигналы-предупреждения, которые автор выявил за 20 лет работы на рынке ИЖС.</p>
+    </div>
+    <div class="flags-grid">
+      <div class="flag-card reveal">
+        <div class="flag-icon">💸</div>
+        <div>
+          <h4>«100% предоплата за скидку»</h4>
+          <p>Нормальная маржинальность стройки — 30–40%. Скидка 30% при полной предоплате — сигнал финансовой пирамиды. Уходите.</p>
+        </div>
+      </div>
+      <div class="flag-card reveal">
+        <div class="flag-icon">🎨</div>
+        <div>
+          <h4>Красивые рендеры без реальных объектов</h4>
+          <p>Фасад может быть красивым, но дом — неживым. Требуйте живые адреса объектов и контакты реальных клиентов.</p>
+        </div>
+      </div>
+      <div class="flag-card reveal">
+        <div class="flag-icon">📋</div>
+        <div>
+          <h4>«Строим под ключ за 50 тыс/м²»</h4>
+          <p>Цена квадрата, в котором можно жить — начинается намного выше. Маркетинговые предложения скрывают минимальную комплектацию.</p>
+        </div>
+      </div>
+      <div class="flag-card reveal">
+        <div class="flag-icon">🏗️</div>
+        <div>
+          <h4>«Инвест-дом», «строим на продажу»</h4>
+          <p>Инвестор берёт ипотечные деньги, строит наполовину, перепродаёт и уходит. Его цель — оборот, не качество.</p>
+        </div>
+      </div>
+      <div class="flag-card reveal">
+        <div class="flag-icon">🤝</div>
+        <div>
+          <h4>Договор подписан «на эмоциях»</h4>
+          <p>Люди влюбляются в картинку дома и подписывают договор без проверки. Сначала проверьте — потом подписывайте.</p>
+        </div>
+      </div>
+      <div class="flag-card reveal">
+        <div class="flag-icon">🔧</div>
+        <div>
+          <h4>Нет возможности посмотреть объект</h4>
+          <p>Надёжная компания показывает объект в любой стадии строительства. Отказ от показа — явный сигнал проблем.</p>
+        </div>
+      </div>
+      <div class="flag-card reveal">
+        <div class="flag-icon">🏠</div>
+        <div>
+          <h4>«Строили для себя» на вторичке</h4>
+          <p>Это главный маркетинговый трюк. В 95% случаев означает «строили как получилось, но теперь хотим вернуть деньги».</p>
+        </div>
+      </div>
+      <div class="flag-card reveal">
+        <div class="flag-icon">🌿</div>
+        <div>
+          <h4>Доски на сырой земле без укрытия</h4>
+          <p>Дерево естественной влажности набирает влагу и после первой зимы даёт трещины. Это видно прямо на стройке.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REGRETS -->
+<section id="regrets">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">😔 Глава 7</div>
+      <h2>5 главных сожалений владельцев домов</h2>
+      <p class="section-desc">Все эти ошибки можно не повторять — если знать о них заранее.</p>
+    </div>
+    <div class="regrets-list" id="regretsList"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PMZh vs DACHA -->
+<section id="pmzh">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">🌿 Глава 8</div>
+      <h2>ПМЖ или дача: в чём разница</h2>
+      <p class="section-desc">«Зачем вам этот дом?» — ответ на этот вопрос определяет всё: бюджет, инженерию, материалы, участок.</p>
+    </div>
+    <div class="pmzh-compare reveal">
+      <div class="pmzh-card pmzh">
+        <h3>🏡 Постоянное проживание (ПМЖ)</h3>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Инженерия — полная</div>
+            <div class="pmzh-item-desc">Скважина, септик, вентиляция, дренаж, защита от замерзания, резервный источник питания</div>
+          </div>
+        </div>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Отопление — автоматическое</div>
+            <div class="pmzh-item-desc">Газ, электричество, тепловой насос, комбинированные системы. Стабильное и энергоэффективное</div>
+          </div>
+        </div>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Материалы — инертные</div>
+            <div class="pmzh-item-desc">Кирпич, газобетон, клеёный брус, СИП с утеплением. Тепло-аккумуляция и долговечность</div>
+          </div>
+        </div>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Инфраструктура — критична</div>
+            <div class="pmzh-item-desc">Интернет, дороги, безопасность, магазины, школы. Жить без ощущения «что-то временно»</div>
+          </div>
+        </div>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Сценарий — жизнь 365 дней</div>
+            <div class="pmzh-item-desc">Утро, работа, вечер, зима, лето. Дом должен быть стабильным и самодостаточным</div>
+          </div>
+        </div>
+      </div>
+      <div class="pmzh-card dacha">
+        <h3>🌻 Дача / дом выходного дня</h3>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Инженерия — минимальная</div>
+            <div class="pmzh-item-desc">Простой набор: базовое водоснабжение, минимальная канализация. Главное — поддержание +7°C, чтобы ничего не замёрзло</div>
+          </div>
+        </div>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Отопление — простое</div>
+            <div class="pmzh-item-desc">Электрическое или печное обогревание. Достаточно для выходных и отпуска</div>
+          </div>
+        </div>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Материалы — лёгкие</div>
+            <div class="pmzh-item-desc">Быстровозводимые конструкции. Главное — скорость и экономия, не долговечность на 100 лет</div>
+          </div>
+        </div>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Приоритет — простота</div>
+            <div class="pmzh-item-desc">Компактный дом, меньше систем для обслуживания. Цель — выдохнуть, а не обслуживать инженерию</div>
+          </div>
+        </div>
+        <div class="pmzh-item">
+          <div class="pmzh-bullet"></div>
+          <div class="pmzh-item-content">
+            <div class="pmzh-item-title">Сценарий — отдых</div>
+            <div class="pmzh-item-desc">Костёр, баня, сон, прогулка, сбор друзей. Простая радость без сложной инфраструктуры</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(232,160,69,0.05);border:1px solid rgba(232,160,69,0.15);border-radius:16px;padding:24px;margin-top:24px;" class="reveal">
+      <p style="font-size:0.95rem;color:var(--text2);line-height:1.7;">
+        💡 <strong style="color:var(--text)">Главная ошибка</strong> — пытаться совместить несовместимое: сделать «дачу с функцией дома» или «дом, но подешевле, как дачу». Получается нечто среднее — не отдых и не жизнь. Строят как «для жизни», а потом приезжают раз в месяц; или берут «дачу», а хотят зимовать — и удивляются, почему дом не держит тепло.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE MODAL -->
+<div class="lead-overlay" id="leadOverlay" onclick="closeLeadOutside(event)">
+  <div class="lead-box" id="leadBox">
+    <div id="leadFormView">
+      <div class="lead-icon" id="leadIcon">📘</div>
+      <h3 id="leadTitle">Скачать книгу бесплатно</h3>
+      <p id="leadDesc">Оставьте контакт — пришлём PDF прямо на телефон и свяжемся, если будут вопросы по вашей ситуации.</p>
+      <input class="lead-field" id="leadName" type="text" placeholder="Ваше имя">
+      <input class="lead-field" id="leadPhone" type="tel" placeholder="Телефон / WhatsApp">
+      <div id="leadTimingWrap">
+        <p style="margin-bottom:8px;font-size:0.82rem;color:var(--text2)">Когда планируете строить?</p>
+        <div class="lead-timing-btns">
+          <div class="lead-timing-btn" onclick="selectTiming(this,'В этом году')">В этом году</div>
+          <div class="lead-timing-btn" onclick="selectTiming(this,'В следующем')">В следующем</div>
+          <div class="lead-timing-btn" onclick="selectTiming(this,'Пока изучаю')">Пока изучаю</div>
+        </div>
+      </div>
+      <input type="hidden" id="leadTiming" value="">
+      <input type="hidden" id="leadSource" value="pdf">
+      <input type="hidden" id="leadExtra" value="">
+      <button class="lead-submit-btn" onclick="submitLead()">Получить →</button>
+      <div class="lead-skip"><a onclick="skipLead()">Пропустить и скачать без регистрации</a></div>
+    </div>
+    <div id="leadSuccessView" class="lead-success" style="display:none">
+      <div class="success-icon">🎉</div>
+      <h3>Спасибо!</h3>
+      <p>Свяжемся с вами в ближайшее время.<br>А пока — вступайте в сообщество:</p>
+      <a href="https://t.me/Kirill_Makuhin" target="_blank" class="btn-tg">✈ Telegram-канал Кирилла</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- AUTHOR + VIP -->
+<section class="author-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:40px">
+      <div class="section-tag">👤 Об авторе</div>
+      <h2>Кирилл Макухин</h2>
+      <p class="section-desc">Основатель БрусГОСТ. 20 лет в ИЖС. Автор книги, которую вы читаете.</p>
+    </div>
+    <div class="author-grid reveal">
+      <div class="author-card">
+        <div class="author-photo-wrap">
+          <img src="kirill.png" alt="Кирилл Макухин">
+          <div>
+            <div class="author-name">Кирилл Макухин</div>
+            <div class="author-role">Основатель БрусГОСТ · Автор «Рашен ИЖС»</div>
+          </div>
+        </div>
+        <p class="author-bio">За двадцать лет в частном домостроении я видел всё: компании, которые рождались на волне и исчезали через год, семьи, которые вкладывали мечту и получали проблемы. Эта книга — концентрат того, что работает. Без рекламы и иллюзий.</p>
+        <div class="author-stats-grid">
+          <div class="author-stat-item">
+            <span class="stat-emoji">🏠</span>
+            <div class="stat-text"><strong>1135+ домов</strong>построено с 2008 года</div>
+          </div>
+          <div class="author-stat-item">
+            <span class="stat-emoji">📅</span>
+            <div class="stat-text"><strong>20+ лет</strong>в сфере ИЖС</div>
+          </div>
+          <div class="author-stat-item">
+            <span class="stat-emoji">🛡️</span>
+            <div class="stat-text"><strong>15 лет</strong>гарантия на конструктив</div>
+          </div>
+          <div class="author-stat-item">
+            <span class="stat-emoji">📍</span>
+            <div class="stat-text"><strong>3 офиса</strong>Москва, Липецк, Калуга</div>
+          </div>
+        </div>
+        <div class="author-links">
+          <a href="https://www.instagram.com/kirill.makuhin/" target="_blank" class="author-link">📸 @kirill.makuhin</a>
+          <a href="https://brusgost.ru" target="_blank" class="author-link">🌐 brusgost.ru</a>
+        </div>
+      </div>
+      <div class="vip-card reveal">
+        <div class="vip-badge">⭐ VIP-консультация</div>
+        <h3>Личная консультация с Кириллом</h3>
+        <p>30 минут один на один — разберём вашу ситуацию, бюджет и поможем избежать ошибок, которые стоят миллионы.</p>
+        <form id="vipForm" onsubmit="submitVip(event)">
+          <input class="vip-field" name="name" type="text" placeholder="Ваше имя" required>
+          <input class="vip-field" name="phone" type="tel" placeholder="Телефон / WhatsApp" required>
+          <textarea class="vip-field" name="project" placeholder="Расскажите о вашем проекте: площадь, тип, регион, сроки..." rows="3"></textarea>
+          <input type="hidden" name="_subject" value="VIP-консультация с Кириллом">
+          <input type="hidden" name="_source" value="vip_consultation">
+          <input type="hidden" name="_captcha" value="false">
+          <button type="submit" class="vip-submit">Записаться на VIP-консультацию →</button>
+        </form>
+        <p class="vip-note">Ответим в течение 2 часов · Бесплатно</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONSULTATION -->
+<section class="consult-section">
+  <div class="container">
+    <div class="consult-card reveal">
+      <div class="consult-left">
+        <div class="section-tag" style="margin-bottom:16px">🏗️ Планируете строить?</div>
+        <h2>Разберём вашу ситуацию бесплатно</h2>
+        <p>Если вы планируете строить в 2025 году и хотите сделать это правильно — оставьте контакт. Свяжемся, ответим на вопросы и поможем не совершить типичных ошибок.</p>
+        <div class="consult-perks">
+          <div class="consult-perk">Разберём ваш бюджет и реальные цифры</div>
+          <div class="consult-perk">Подскажем, как выбрать подрядчика</div>
+          <div class="consult-perk">Ответим на вопросы по проекту</div>
+          <div class="consult-perk">Без навязывания и давления</div>
+        </div>
+      </div>
+      <form class="consult-form" id="consultForm" onsubmit="submitConsult(event)">
+        <input class="consult-field" name="name" type="text" placeholder="Ваше имя" required>
+        <input class="consult-field" name="phone" type="tel" placeholder="Телефон / WhatsApp" required>
+        <select class="consult-field" name="budget">
+          <option value="" disabled selected>Планируемый бюджет</option>
+          <option>До 5 млн ₽</option>
+          <option>5–10 млн ₽</option>
+          <option>10–20 млн ₽</option>
+          <option>20–40 млн ₽</option>
+          <option>Более 40 млн ₽</option>
+        </select>
+        <select class="consult-field" name="timing">
+          <option value="" disabled selected>Когда планируете строить?</option>
+          <option>В этом году (2025)</option>
+          <option>В следующем году</option>
+          <option>Пока изучаю варианты</option>
+        </select>
+        <input type="hidden" name="_subject" value="Бесплатный разбор проекта">
+        <input type="hidden" name="_source" value="consultation_form">
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit" class="consult-submit">Записаться на разбор →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">⌂ Рашен ИЖС</div>
+  <p class="footer-desc">Интерактивный гид по книге Кирилла Макухина. Честно о строительстве частного дома в России.</p>
+  <p class="footer-copy">«Рашен ИЖС» / Кирилл Макухин © 2025 · Издательские решения · ISBN 978-5-0068-5073-6</p>
+</footer>
+
+<script>
+// ===== SCROLL REVEAL =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ===== TOOL TABS =====
+function switchTool(id) {
+  document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tool-' + id).classList.add('active');
+  document.querySelector('[data-tool=' + id + ']').classList.add('active');
+  if (id === 'quiz') initQuiz();
+}
+
+// ===== RELIABILITY CALCULATOR =====
+const catMax = [25, 20, 20, 15, 10, 10];
+const catScores = [0, 0, 0, 0, 0, 0];
+
+function getCategoryIndex(el) {
+  const cat = el.closest('.calc-category');
+  const cats = Array.from(document.querySelectorAll('.calc-category'));
+  return cats.indexOf(cat);
+}
+
+function toggleItem(el, pts) {
+  const check = el.querySelector('.calc-item-check');
+  const catIdx = getCategoryIndex(el);
+  if (check.classList.contains('checked')) {
+    check.classList.remove('checked');
+    catScores[catIdx] -= pts;
+  } else {
+    check.classList.add('checked');
+    catScores[catIdx] += pts;
+  }
+  updateScore();
+}
+
+function updateScore() {
+  const total = catScores.reduce((a,b) => a+b, 0);
+  document.getElementById('scoreNum').textContent = total;
+
+  // Circle
+  const circ = 2 * Math.PI * 60;
+  const offset = circ - (total / 100) * circ;
+  const circle = document.getElementById('scoreCircle');
+  circle.style.strokeDashoffset = offset;
+
+  let color, label, desc;
+  if (total >= 80) {
+    color = '#4caf80'; label = '✅ Надёжный партнёр'; desc = 'Высокий уровень доверия. Компания соответствует критериям надёжности. Можно работать с осторожным контролем.';
+  } else if (total >= 60) {
+    color = '#e8c445'; label = '⚡ Приемлемый уровень'; desc = 'Компания имеет сильные стороны, но есть пробелы. Требуется дополнительная проверка критичных пунктов.';
+  } else if (total >= 40) {
+    color = '#e8a045'; label = '⚠️ Требует внимания'; desc = 'Несколько красных флагов. Не торопитесь с решением. Запросите доказательства по слабым категориям.';
+  } else if (total > 0) {
+    color = '#e05555'; label = '🚨 Высокий риск'; desc = 'Компания не прошла базовые критерии проверки. Рекомендуется отказаться от сотрудничества.';
+  } else {
+    color = 'rgba(255,255,255,0.2)'; label = 'Начните проверку'; desc = 'Отмечайте критерии слева, чтобы оценить надёжность подрядчика по методике книги.';
+  }
+  circle.style.stroke = color;
+  document.getElementById('scoreLabel').textContent = label;
+  document.getElementById('scoreLabel').style.color = color;
+  document.getElementById('scoreDesc').textContent = desc;
+
+  // Bars
+  catScores.forEach((s, i) => {
+    const pct = Math.min(100, (s / catMax[i]) * 100);
+    document.getElementById('bar' + i).style.width = pct + '%';
+    document.getElementById('pts' + i).textContent = s + '/' + catMax[i];
+  });
+}
+
+// ===== BUDGET CALCULATOR =====
+function calcBudget() {
+  const area = parseInt(document.getElementById('area').value) || 120;
+  const pricePerM2 = parseInt(document.getElementById('quality').value);
+  const floors = parseInt(document.getElementById('floors').value);
+  const purpose = document.getElementById('purpose').value;
+
+  const houseBase = area * pricePerM2 * 1000;
+  const floorMult = floors === 2 ? 1.15 : 1;
+  const purposeMult = purpose === 'pmzh' ? 1.2 : 1;
+
+  const house = Math.round(houseBase * floorMult * purposeMult);
+  const land = Math.round(house * 0.4);
+  const engineering = purpose === 'pmzh' ? Math.round(house * 0.18) : Math.round(house * 0.08);
+  const landscape = Math.round(house * 0.15);
+  const furniture = Math.round(house * 0.12);
+  const other = Math.round(house * 0.08);
+  const total = house + land + engineering + landscape + furniture + other;
+  const reserve = Math.round(total * 0.3);
+
+  const fmt = n => (n / 1000000).toFixed(1) + ' млн ₽';
+
+  const rows = [
+    { icon:'🏗️', label:'Строительство дома «под ключ»', val: house, note:'~' + pricePerM2 + ' тыс/м²' },
+    { icon:'🌳', label:'Земельный участок (ориентир)', val: land, note:'40% от стоимости дома' },
+    { icon:'🔧', label:'Инженерные системы', val: engineering, note: purpose === 'pmzh' ? 'Скважина, септик, вентиляция, дренаж' : 'Базовый набор' },
+    { icon:'🏡', label:'Благоустройство участка', val: landscape, note:'Дорожки, забор, озеленение, свет' },
+    { icon:'🛋️', label:'Мебель, техника, отделка', val: furniture, note:'Финальный этап обустройства' },
+    { icon:'📦', label:'Прочее (бытовка, навес, мелочи)', val: other, note:'Всё, что «потом»' },
+  ];
+
+  document.getElementById('budgetRows').innerHTML = rows.map(r => `
+    <div class="budget-row">
+      <div class="budget-row-label">${r.icon} ${r.label} <span style="color:var(--text2);font-size:0.8rem;">(${r.note})</span></div>
+      <div class="budget-row-val">${fmt(r.val)}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('budgetTotal').textContent = fmt(total);
+  document.getElementById('budgetWarning').querySelector('span:last-child').textContent =
+    `Земля и коробка — лишь ~30% реальных вложений. Рекомендуется резерв: +${fmt(reserve)}. Итоговый бюджет с резервом: ${fmt(total + reserve)}.`;
+}
+calcBudget();
+
+// ===== CHECKLIST =====
+const checklistData = [
+  {
+    cat: '📋 Документы и юридика',
+    items: [
+      'Проверить ИНН компании в ИФНС на долги',
+      'Изучить арбитражные дела (kad.arbitr.ru)',
+      'Проверить учредителей и директора',
+      'Убедиться, что ОКВЭД соответствует стройке',
+      'Проверить стаж компании на рынке (5+ лет)',
+    ]
+  },
+  {
+    cat: '🔍 Репутация и отзывы',
+    items: [
+      'Найти реальные отзывы с фото объектов',
+      'Проверить наличие публичных кейсов с адресами',
+      'Позвонить нескольким реальным клиентам',
+      'Посмотреть, как компания реагирует на негатив',
+      'Поискать упоминания в соцсетях и форумах',
+    ]
+  },
+  {
+    cat: '🏗️ Производство и база',
+    items: [
+      'Лично посетить производство или склад',
+      'Проверить наличие чек-листов и журналов',
+      'Убедиться, что есть авторский технадзор',
+      'Попросить показать типовую документацию',
+      'Осмотреть живой объект в процессе строительства',
+    ]
+  },
+  {
+    cat: '💰 Договор и финансы',
+    items: [
+      'Получить подробную смету с расшифровкой',
+      'Проверить этапы оплаты (не 100% предоплата)',
+      'Уточнить наличие эскроу-счёта',
+      'Прописать гарантийные обязательства',
+      'Убедиться, что нет скрытых доп. работ',
+    ]
+  },
+  {
+    cat: '👷 Команда и исполнение',
+    items: [
+      'Познакомиться с прорабом лично',
+      'Убедиться, что бригады постоянные, не временные',
+      'Уточнить, кто будет контролировать качество',
+      'Спросить про технадзор на всех этапах',
+      'Проверить наличие страховки СМР',
+    ]
+  },
+  {
+    cat: '🏠 Технический осмотр объекта',
+    items: [
+      'Нанять независимого технадзора для проверки',
+      'Проверить фундамент (нет трещин, перекоса)',
+      'Проверить влажность стен и перекрытий',
+      'Убедиться в наличии правильной вентиляции',
+      'Осмотреть качество кровли и гидроизоляции',
+    ]
+  },
+];
+
+function buildChecklist() {
+  const grid = document.getElementById('checklistGrid');
+  let totalItems = 0;
+  let checkedItems = 0;
+
+  grid.innerHTML = checklistData.map((cat, ci) => {
+    totalItems += cat.items.length;
+    return `
+      <div class="checklist-cat">
+        <h4><span>${cat.cat.split(' ')[0]}</span> ${cat.cat.slice(cat.cat.indexOf(' ')+1)}</h4>
+        <div class="checklist-progress"><div class="checklist-progress-fill" id="cpf${ci}" style="width:0%"></div></div>
+        ${cat.items.map((item, ii) => `
+          <div class="checklist-item" onclick="toggleCheck(this, ${ci}, ${ii})">
+            <div class="checklist-checkbox"></div>
+            <span>${item}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }).join('');
+  updateChecklistSummary();
+}
+
+function toggleCheck(el, ci, ii) {
+  el.classList.toggle('checked');
+  updateCategoryProgress(ci);
+  updateChecklistSummary();
+}
+
+function updateCategoryProgress(ci) {
+  const cat = document.querySelectorAll('.checklist-cat')[ci];
+  const total = cat.querySelectorAll('.checklist-item').length;
+  const checked = cat.querySelectorAll('.checklist-item.checked').length;
+  document.getElementById('cpf' + ci).style.width = (checked/total*100) + '%';
+}
+
+function updateChecklistSummary() {
+  const total = document.querySelectorAll('.checklist-item').length;
+  const checked = document.querySelectorAll('.checklist-item.checked').length;
+  const pct = total ? Math.round(checked/total*100) : 0;
+  const circ = 220;
+  const offset = circ - (pct/100) * circ;
+  document.getElementById('checkRing').style.strokeDashoffset = offset;
+  document.getElementById('checkNum').textContent = pct + '%';
+  const msgs = ['Отметьте пункты, которые выполнены для вашего объекта.', 'Хорошее начало! Продолжайте проверку.', 'Больше половины сделано — продолжайте!', 'Почти готово! Завершите оставшиеся пункты.', '✅ Все пункты проверены. Можно подписывать договор!'];
+  document.getElementById('checkSummary').textContent = msgs[Math.min(4, Math.floor(pct/25))];
+}
+buildChecklist();
+
+// ===== QUIZ =====
+const quizData = [
+  {
+    q: 'Как часто вы планируете бывать в доме?',
+    opts: ['Жить постоянно, каждый день', 'По выходным и в отпуск', 'Несколько раз в месяц', 'Преимущественно летом'],
+    scores: [4, 1, 2, 1]
+  },
+  {
+    q: 'Насколько важна инфраструктура рядом с домом?',
+    opts: ['Критично: школы, магазины, больница', 'Важно, но не обязательно всё', 'Достаточно магазина в 20 минутах', 'Хочу максимальное уединение'],
+    scores: [4, 3, 2, 1]
+  },
+  {
+    q: 'Какой бюджет на отопление вы закладываете?',
+    opts: ['Полноценная система: газ / тепловой насос', 'Электрическое отопление с автоматикой', 'Простой обогрев на выходные', 'Печное или минимальное'],
+    scores: [4, 3, 2, 1]
+  },
+  {
+    q: 'Важна ли возможность зимовать в доме?',
+    opts: ['Да, это мой основной дом', 'Хотел бы иногда зимовать', 'Нет, только летний сезон', 'Дача закрывается на зиму'],
+    scores: [4, 3, 1, 1]
+  },
+  {
+    q: 'Что главное для вас в загородном доме?',
+    opts: ['Стабильность и комфорт круглый год', 'Отдых и восстановление сил', 'Природа и уединение', 'Место для встреч с друзьями'],
+    scores: [4, 2, 1, 2]
+  },
+  {
+    q: 'Как вы относитесь к обслуживанию инженерных систем?',
+    opts: ['Готов вкладывать — это надёжность', 'Хочу минимум обслуживания', 'Только самое базовое', 'Чем проще — тем лучше'],
+    scores: [4, 2, 1, 1]
+  },
+];
+
+let quizAnswers = [];
+let quizStep = 0;
+
+function initQuiz() {
+  quizAnswers = [];
+  quizStep = 0;
+  renderQuiz();
+}
+
+function renderQuiz() {
+  const content = document.getElementById('quizContent');
+  const result = document.getElementById('quizResult');
+  if (quizStep >= quizData.length) {
+    showQuizResult();
+    return;
+  }
+  const q = quizData[quizStep];
+  const pct = (quizStep / quizData.length) * 100;
+  document.getElementById('quizProgress').style.width = pct + '%';
+
+  content.innerHTML = `
+    <div class="quiz-question">${q.q}</div>
+    <div class="quiz-options">
+      ${q.opts.map((opt, i) => `
+        <div class="quiz-option ${quizAnswers[quizStep] === i ? 'selected' : ''}" onclick="selectQuizOpt(${i})">
+          <div class="quiz-option-dot"></div>
+          ${opt}
+        </div>
+      `).join('')}
+    </div>
+    <div class="quiz-nav">
+      <div class="quiz-counter">Вопрос ${quizStep+1} из ${quizData.length}</div>
+      <button class="btn btn-primary" onclick="nextQuizStep()" ${quizAnswers[quizStep] === undefined ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : ''}>
+        ${quizStep < quizData.length - 1 ? 'Далее →' : 'Узнать результат'}
+      </button>
+    </div>
+  `;
+}
+
+function selectQuizOpt(i) {
+  quizAnswers[quizStep] = i;
+  renderQuiz();
+}
+
+function nextQuizStep() {
+  if (quizAnswers[quizStep] === undefined) return;
+  quizStep++;
+  renderQuiz();
+}
+
+function showQuizResult() {
+  const totalScore = quizAnswers.reduce((sum, ans, i) => sum + quizData[i].scores[ans], 0);
+  document.getElementById('quizProgress').style.width = '100%';
+
+  let icon, title, desc, tags;
+  if (totalScore >= 20) {
+    icon = '🏡'; title = 'Вам нужен дом для ПМЖ';
+    desc = 'Ваши ответы указывают на потребность в полноценном постоянном жилье. Вам важна стабильность, инфраструктура и комфорт круглый год. Закладывайте полный бюджет с инженерией — экономия здесь станет отложенной болью.';
+    tags = ['Полная инженерия', 'Автоматическое отопление', 'Хорошая инфраструктура', 'Стабильные материалы'];
+  } else if (totalScore >= 13) {
+    icon = '🌿'; title = 'Дом-гибрид: основа ПМЖ с дачным духом';
+    desc = 'Вы хотите комфорт постоянного жилья, но цените уединение и отдых. Важно не экономить на инженерии, но можно выбрать более удалённый участок. Главное — честно определите, будете ли зимовать постоянно.';
+    tags = ['Утеплённый контур', 'Качественное отопление', 'Базовая инфраструктура', 'Надёжный фундамент'];
+  } else {
+    icon = '🌻'; title = 'Вам подойдёт дача / дом выходного дня';
+    desc = 'Вы ищете место для отдыха и восстановления, а не постоянного жилья. Фокусируйтесь на простоте и надёжности в рамках дачного формата. Не переусложняйте инженерию — это лишние траты и головная боль.';
+    tags = ['Лёгкие конструкции', 'Простое отопление', 'Минимальная инженерия', 'Сезонное использование'];
+  }
+
+  document.getElementById('leadExtra').value = title;
+  document.getElementById('quizContent').innerHTML = `
+    <div class="quiz-result show">
+      <div class="quiz-result-icon">${icon}</div>
+      <h3>${title}</h3>
+      <p>${desc}</p>
+      <div class="quiz-result-tags">${tags.map(t => `<span class="result-tag">${t}</span>`).join('')}</div>
+      <div class="tool-lead-block" style="margin-top:20px;text-align:left">
+        <p><strong>Хотите персональный план действий?</strong><br>Подготовим рекомендации под ваш результат и свяжемся лично.</p>
+        <button class="btn-lead-trigger" onclick="openLeadModal('quiz')">🎯 Получить план</button>
+      </div>
+      <button class="btn btn-ghost" onclick="initQuiz()" style="margin:16px auto 0;">↩ Пройти заново</button>
+    </div>
+  `;
+}
+
+// Init quiz
+initQuiz();
+
+// ===== REGRETS =====
+const regretsData = [
+  {
+    title: 'Бюджет вышел в 3 раза больше',
+    body: 'Почти все владельцы домов произносили одну фразу: «Мы думали, выйдет в пять миллионов. Вышло в пятнадцать.» Это не шутка — это правило. Дом всегда «просит» больше, чем обещал. За каждым пунктом сметы скрыты мелочи: фурнитура, инженерные мелочи, мебель, свет, благоустройство, бытовка, забор, терраса. Каждая мелочь — плюс 50 тысяч. А мелочей — сотни.\n\nНастоящий дом строится только тогда, когда у вас есть ещё 30% сверху — для непредвиденного, для жизни, для вдохновения.'
+  },
+  {
+    title: 'Два этажа — лишние',
+    body: 'Каждый второй владелец через год говорит: «Следующий дом построю одноэтажный». Пока смотришь проекты, лестница кажется красивой деталью — символом уюта и статуса. Но когда начинаешь жить, она превращается в барьер. На втором этаже — спальни, на первом — жизнь. Через год оказывается, что наверх никто не поднимается, а половина дома стоит пустой и холодной.\n\nЕсли участок позволяет — выбирайте горизонт, не высоту. Одноэтажный дом проще, теплее и дешевле в эксплуатации.'
+  },
+  {
+    title: 'Сэкономили на специалистах',
+    body: 'Люди платят миллионы за стройку, но жалеют сто тысяч на того, кто защитит эти миллионы. «Зачем мне архитектор, у меня есть картинка», «Зачем технадзор, я сам всё посмотрю» — эти фразы стоят потом в три раза дороже.\n\nТехнадзор — это глаза заказчика, когда заказчик на работе. Архитектор — голос разума, который видит на три шага вперёд. Экономия на специалистах — это всегда отсроченная боль. Ошибки проявятся позже, когда дом уже обжит, и переделывать станет невозможно.'
+  },
+  {
+    title: 'Планировка сделана неудобно',
+    body: 'Дверь открывается не туда, где заходишь с пакетами. Кухня не видит закат, зато смотрит на соседский забор. Детская — над котельной. А терраса, где мечтали пить утренний кофе, оказывается в тени весь день.\n\nЭти ошибки не видны на чертеже, пока не начинаешь жить. Планировка — это сценарий жизни. Она должна подстраиваться под семью, а не наоборот. Инженерия — нервная система дома: если она продумана плохо, жизнь превращается в компромисс между комфортом и раздражением.'
+  },
+  {
+    title: 'Нет проекта и вентиляции',
+    body: 'Самое частое «потом» — это слово «вентиляция». Вспоминают о ней, когда в доме нечем дышать. Современные дома делают слишком герметичными: тёплые, экономичные, энергоэффективные — и задушенные. Без приточки, без вытяжки, без движения воздуха.\n\nВентиляция — это не роскошь, а базовая функция живого дома. Она должна проектироваться вместе с архитектурой, а не «потом». Когда дом строится «по ходу дела», всё, что кажется мелочью, становится проблемой. Нет проекта — нет опоры.'
+  },
+];
+
+const regretsList = document.getElementById('regretsList');
+regretsList.innerHTML = regretsData.map((r, i) => `
+  <div class="regret-item reveal" id="regret${i}">
+    <div class="regret-header" onclick="toggleRegret(${i})">
+      <div class="regret-header-left">
+        <div class="regret-num">${i+1}</div>
+        <div class="regret-title">${r.title}</div>
+      </div>
+      <div class="regret-arrow">▾</div>
+    </div>
+    <div class="regret-body" id="regretBody${i}">
+      <div class="regret-body-inner">${r.body.replace(/\n\n/g, '<br><br>')}</div>
+    </div>
+  </div>
+`).join('');
+regretsList.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function toggleRegret(i) {
+  const item = document.getElementById('regret' + i);
+  const body = document.getElementById('regretBody' + i);
+  const isOpen = item.classList.contains('open');
+  if (isOpen) {
+    body.style.height = '0';
+    item.classList.remove('open');
+  } else {
+    body.style.height = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
+}
+
+// Smooth scroll helper
+function scrollTo(sel) {
+  document.querySelector(sel)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ===== LEAD CAPTURE =====
+const LEAD_EMAIL = 'spetsialist@yandex.ru';
+let leadTimingValue = '';
+
+function openLeadModal(source) {
+  leadTimingValue = '';
+  document.getElementById('leadTiming').value = '';
+  document.getElementById('leadSource').value = source;
+  document.getElementById('leadName').value = '';
+  document.getElementById('leadPhone').value = '';
+  document.getElementById('leadFormView').style.display = '';
+  document.getElementById('leadSuccessView').style.display = 'none';
+  document.querySelectorAll('.lead-timing-btn').forEach(b => b.classList.remove('active'));
+
+  if (source === 'pdf') {
+    document.getElementById('leadIcon').textContent = '📘';
+    document.getElementById('leadTitle').textContent = 'Скачать книгу бесплатно';
+    document.getElementById('leadDesc').textContent = 'Оставьте контакт — пришлём PDF и свяжемся, если будут вопросы по вашей ситуации.';
+    document.getElementById('leadTimingWrap').style.display = '';
+    document.getElementById('leadExtra').value = '';
+  } else if (source === 'budget') {
+    const area = document.getElementById('area').value;
+    const quality = document.getElementById('quality').options[document.getElementById('quality').selectedIndex].text;
+    const total = document.getElementById('budgetTotal').textContent;
+    document.getElementById('leadIcon').textContent = '📊';
+    document.getElementById('leadTitle').textContent = 'Получить расчёт бюджета';
+    document.getElementById('leadDesc').textContent = 'Пришлём ваш расчёт и список скрытых расходов, о которых обычно забывают при планировании.';
+    document.getElementById('leadTimingWrap').style.display = 'none';
+    document.getElementById('leadExtra').value = `Площадь: ${area}м², Класс: ${quality}, Итого: ${total}`;
+  } else if (source === 'checklist') {
+    document.getElementById('leadIcon').textContent = '✅';
+    document.getElementById('leadTitle').textContent = 'Помогим с проверкой';
+    document.getElementById('leadDesc').textContent = 'Оставьте контакт — разберём чек-лист вместе и поможем оценить вашего подрядчика или объект.';
+    document.getElementById('leadTimingWrap').style.display = 'none';
+    document.getElementById('leadExtra').value = 'Чек-лист покупки';
+  } else if (source === 'quiz') {
+    document.getElementById('leadIcon').textContent = '🎯';
+    document.getElementById('leadTitle').textContent = 'Получить персональный план';
+    document.getElementById('leadDesc').textContent = 'Подготовим план действий под ваш тип дома и ситуацию — пришлём на телефон.';
+    document.getElementById('leadTimingWrap').style.display = 'none';
+    document.getElementById('leadExtra').value = document.getElementById('leadExtra').value || 'Квиз пройден';
+  }
+
+  document.getElementById('leadOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function selectTiming(el, val) {
+  document.querySelectorAll('.lead-timing-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  leadTimingValue = val;
+  document.getElementById('leadTiming').value = val;
+}
+
+function closeLeadModal() {
+  document.getElementById('leadOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLeadOutside(e) {
+  if (e.target === document.getElementById('leadOverlay')) closeLeadModal();
+}
+
+async function submitLead() {
+  const name = document.getElementById('leadName').value.trim();
+  const phone = document.getElementById('leadPhone').value.trim();
+  const source = document.getElementById('leadSource').value;
+  const timing = document.getElementById('leadTiming').value;
+  const extra = document.getElementById('leadExtra').value;
+
+  if (!name || !phone) { alert('Пожалуйста, заполните имя и телефон'); return; }
+
+  const btn = document.querySelector('.lead-submit-btn');
+  btn.disabled = true; btn.textContent = 'Отправляем...';
+
+  const body = new FormData();
+  body.append('name', name);
+  body.append('phone', phone);
+  body.append('timing', timing || 'Не указано');
+  body.append('source', source);
+  if (extra) body.append('details', extra);
+  body.append('_subject', `Новая заявка с сайта — ${source}`);
+  body.append('_captcha', 'false');
+
+  try {
+    await fetch(`https://formsubmit.co/${LEAD_EMAIL}`, { method: 'POST', body });
+  } catch(e) {}
+
+  if (source === 'pdf') {
+    const a = document.createElement('a');
+    a.href = 'Рашен_ИЖС.pdf'; a.download = 'Рашен_ИЖС.pdf'; a.click();
+  }
+
+  document.getElementById('leadFormView').style.display = 'none';
+  document.getElementById('leadSuccessView').style.display = '';
+  btn.disabled = false; btn.textContent = 'Получить →';
+}
+
+function skipLead() {
+  closeLeadModal();
+  const a = document.createElement('a');
+  a.href = 'Рашен_ИЖС.pdf'; a.download = 'Рашен_ИЖС.pdf'; a.click();
+}
+
+async function submitVip(e) {
+  e.preventDefault();
+  const form = document.getElementById('vipForm');
+  const btn = form.querySelector('button');
+  btn.disabled = true; btn.textContent = 'Отправляем...';
+  try {
+    await fetch(`https://formsubmit.co/${LEAD_EMAIL}`, { method: 'POST', body: new FormData(form) });
+  } catch(er) {}
+  form.innerHTML = '<div style="text-align:center;padding:20px"><div style="font-size:2rem;margin-bottom:10px">✅</div><p style="color:var(--accent);font-weight:700">Заявка отправлена!</p><p style="color:var(--text2);font-size:0.9rem">Кирилл свяжется с вами в течение 2 часов</p><a href="https://t.me/Kirill_Makuhin" target="_blank" class="btn-tg" style="margin-top:16px;display:inline-flex">✈ Подписаться на Telegram</a></div>';
+}
+
+async function submitConsult(e) {
+  e.preventDefault();
+  const form = document.getElementById('consultForm');
+  const btn = form.querySelector('button');
+  btn.disabled = true; btn.textContent = 'Отправляем...';
+  try {
+    await fetch(`https://formsubmit.co/${LEAD_EMAIL}`, { method: 'POST', body: new FormData(form) });
+  } catch(er) {}
+  form.innerHTML = '<div style="text-align:center;padding:20px"><div style="font-size:2rem;margin-bottom:10px">✅</div><p style="color:var(--green);font-weight:700">Заявка принята!</p><p style="color:var(--text2);font-size:0.9rem;margin-bottom:16px">Свяжемся с вами в ближайшее время</p><a href="https://t.me/Kirill_Makuhin" target="_blank" class="btn-tg" style="display:inline-flex">✈ Telegram-канал Кирилла</a></div>';
+}
+
+// ===== CHAPTERS READER =====
+const chaptersData = [
+  {
+    tag: '📖 Введение',
+    title: 'Рынок ИЖС — это отдельная вселенная',
+    html: `
+      <p>Рынок частного домостроения в России — это отдельная вселенная. Со своими законами, чудесами и катастрофами. Здесь рядом живут энтузиазм и авось, мечта о доме и реальность стройки, честный труд и спешка ради прибыли.</p>
+      <p>За двадцать лет в этой сфере я видел всё: как рождаются компании «на волне» и исчезают через год, как клиенты верят красивым рендерам, как подрядчики путают скорость с качеством, и как даже опытные строители повторяют одни и те же ошибки.</p>
+      <blockquote>Но за всем этим шумом есть одна простая истина: дом — это не квадратные метры и не технология. Это про людей. Про их решения, усталость, характер и мечты.</blockquote>
+      <p>Пока человек не понимает, зачем он строит, он будет ходить по кругу — от подрядчика к подрядчику, от ошибки к ошибке.</p>
+      <p>Эта книга — не про рекламу и не про строительные технологии. Она про систему, в которой всё связано: рынок, компании, заказчики, иллюзии, деньги и смыслы. Про то, как работает современный ИЖС в России — честно и без глянца.</p>
+      <p>Я собрал здесь не только свой опыт, но и опыт сотен семей, которые пытались построить дом мечты и столкнулись с реальностью. Кто-то ошибся и устал. Кто-то справился. А кто-то понял, что главное — не стены, а ясность, с которой ты их возводишь.</p>
+      <p>Если вы только начинаете путь в загородную жизнь — эта книга сэкономит вам годы. Если вы уже строили и обожглись — она даст инструменты, чтобы не повторять. А если вы просто хотите понять, как устроен наш, по-настоящему Российский рынок ИЖС — добро пожаловать.</p>
+      <blockquote>Здесь не будет иллюзий! Но будет правда, которой хватает, чтобы построить дом с первого раза.</blockquote>
+    `
+  },
+  {
+    tag: '🚲 Глава 1',
+    title: 'Рынок ИЖС сегодня',
+    html: `
+      <h3>На велосипеде в горку: как устроен рынок частного домостроения</h3>
+      <p>Рынок ИЖС — это не про спокойствие. Это велосипед в горку: если крутишь педали — движешься вперёд; перестал — катишься назад или падаешь набок. Так устроено всё загородное строительство.</p>
+      <p>Последние несколько лет мы ехали с горки. Льготные ставки, дешёвые деньги, взрывной спрос. Дома покупали всё — и коробки, и проекты «на коленке», и дома без фундамента. Люди верили в сказку: «куплю готовое — и буду жить на природе». Подрядчики в этой волне тоже поверили в вечное лето. Но любая гонка без педалей заканчивается одинаково — ты встаёшь.</p>
+      <p>Сегодня рынок притормозил. Он стал взрослее, жёстче и — впервые за долгое время — честнее. Сейчас выживает не тот, кто громче кричит, а тот, кто строит по правилам и держит репутацию.</p>
+      <h3>Льготная ипотека, эскроу-счета и их последствия</h3>
+      <p>Когда ввели льготную ипотеку, многие подумали, что это спасение для рынка. Ставка в шесть процентов — и мечта о доме вдруг становится реальностью. Семьи брали кредиты, строители брали заказы, и всё казалось простым.</p>
+      <p>Но вместе с этим в отрасль ворвались инвесторы и псевдо-застройщики. Они строили не дома, а финансовые пирамиды из бетона и фасадов. Именно поэтому в 2024 году появились эскроу-счета. Государство сказало: «Деньги храните в банке, а получите их только после сдачи дома». Для покупателя — это защита. Для строителя — испытание.</p>
+      <p>Раньше получил аванс, купил материалы, построил. Теперь надо построить на свои, доказать, что всё готово, и только потом получить оплату. У тех, кто жил с оборота, всё рухнуло. Кто строил на честных деньгах — встал крепче.</p>
+      <blockquote>Эскроу оказался как рентген: показал, кто построен на песке. Тысячи компаний вышли из игры. Но рынок от этого не умер — он почистился.</blockquote>
+      <h3>Почему компании косячат, но рынок растёт</h3>
+      <p>В стройке нет компаний без ошибок. Сто процентов подрядчиков косячат — вопрос в том, что они делают после. Кто-то исправляет и сохраняет клиента. Кто-то спорит и теряет всё.</p>
+      <p>Рынок в этом смысле очень честный: он наказывает всех, кроме ответственных. Но почему же рынок при этом растёт? Потому что спрос на дом — не мода, а потребность. Люди устали от шума, от скоростей, от жизни в бетонных стенах. Они ищут воздух, тишину и возможность видеть деревья из окна. Это не тренд — это возврат к естественному.</p>
+    `
+  },
+  {
+    tag: '⚠️ Глава 2',
+    title: 'Ошибки и иллюзии в стройке',
+    html: `
+      <h3>Почему нельзя строить дом самостоятельно</h3>
+      <p>Каждую весну тысячи людей решают: «А что, если построю сам?» Снаружи идея выглядит романтично. Сруб, друзья-помощники, видео-инструкции в интернете и вера, что «главное — не платить лишнее».</p>
+      <p>Но реальность быстро отрезвляет. Стройка — это не просто стены и крыша. Это сотни решений, принятых в правильной последовательности, где каждое влияет на следующее. Ошибка на фундаменте проявится, когда вы уже клеите обои. Неверно выбранный материал даст трещину через зиму. Экономия на проекте обернётся потерей всего бюджета.</p>
+      <blockquote>Я всегда говорю: строить дом самому — это как оперировать себе аппендицит. Теоретически можно. Но зачем? Есть люди, которые делают это каждый день, знают нюансы, последовательность, контрольные точки.</blockquote>
+      <p>На моей практике таких историй десятки. Начинается всё с энтузиазма и фразы «зато сэкономим». А заканчивается тем, что семья выгорает, деньги кончаются, а отношения рушатся. Дом превращается из мечты в источник конфликтов.</p>
+      <h3>Истории мошенничеств и инвест-проектов</h3>
+      <p>Рынок стройки, особенно в последние годы, притянул к себе множество случайных людей. Появились «инвест-застройщики» — те, кто покупает землю, ставит на ней дешёвую коробку и продаёт под видом «готового дома мечты».</p>
+      <p>Выглядит всё красиво: свежий фасад, модные окна, аккуратная реклама. Но стоит копнуть — и под штукатуркой прячется хаос. Доски лежат неделями на сырой земле, без укрытия. Внутри дома белые полосы от влаги на стенах, просевшие сваи, сгнившие лаги.</p>
+      <p>Покупатель, вдохновлённый картинками и обещаниями «европейского качества», узнаёт правду уже после сделки — когда приходит зима. Это не просто халатность, это системный обман. Люди вкладывают деньги, заработанные годами, а получают коробку из дешёвых материалов, собранную в спешке.</p>
+      <h3>Как не вляпаться в «дом мечты» из говна и палок</h3>
+      <ul>
+        <li><strong>Никогда не верьте картинке.</strong> Фасад может быть красивым, но дом — неживым. Перед покупкой всегда приглашайте технического специалиста.</li>
+        <li><strong>Не доверяйте риэлтору вместо инженера.</strong> Риэлтор зарабатывает на комиссии, а не на вашей безопасности.</li>
+        <li><strong>Проверяйте компанию по документам.</strong> ИНН вбивается в систему, и вы видите всё: судебные дела, исполнительные производства, отзывы.</li>
+        <li><strong>Не ведитесь на «слишком хорошее предложение».</strong> Если вам предлагают скидку 30% при стопроцентной предоплате — это не подарок, это сигнал беды. Нормальная маржинальность стройки — 30–40%.</li>
+        <li><strong>Никогда не покупайте дом, в который не вложены эмоции.</strong> Его видно сразу: пустой взгляд окон, холодная планировка, отсутствие души.</li>
+      </ul>
+      <blockquote>В строительстве, как и в жизни, истина проста: дешевле — всегда дороже. А правда — всегда видна тем, кто смотрит не на фасад, а в глубину.</blockquote>
+    `
+  },
+  {
+    tag: '🔍 Глава 3',
+    title: 'Как выбрать подрядчика',
+    html: `
+      <p>Я много лет наблюдаю один и тот же сценарий: люди тщательно выбирают участок, влюбляются в картинку дома — и подписывают договор «на эмоциях». А дальше начинается лотерея. Эта глава — про то, как превратить выбор подрядчика из лотереи в управляемый процесс.</p>
+      <h3>Индекс надёжности компании (100 баллов)</h3>
+      <p><strong>1. Юридическая чистота — 25 баллов</strong></p>
+      <ul>
+        <li>Нет долгов по налогам — 10 баллов</li>
+        <li>Отсутствие свежих арбитражных споров как ответчика — 5 баллов</li>
+        <li>Прозрачные учредители, не «резиновые» директора — 5 баллов</li>
+        <li>Деятельность соответствует ОКВЭД, стаж на рынке не менее 5 лет — 5 баллов</li>
+      </ul>
+      <p><strong>2. Репутация и след в сети — 20 баллов</strong></p>
+      <ul>
+        <li>Реальные отзывы с фото и адресами объектов — 10 баллов</li>
+        <li>Публичные кейсы с адресами, датами, техническими параметрами — 5 баллов</li>
+        <li>Реакция компании на негатив: как отвечают, как исправляют — 5 баллов</li>
+      </ul>
+      <p><strong>3. Производственная база и процессы — 20 баллов</strong></p>
+      <ul>
+        <li>Собственное производство, склад, техника, инструмент — 10 баллов</li>
+        <li>Стандарты: чек-листы, журналы работ, контроль качества — 5 баллов</li>
+        <li>Типовые узлы, рабочая документация — 5 баллов</li>
+      </ul>
+      <p><strong>4. Финансовая модель и расчёты — 15 баллов</strong></p>
+      <p><strong>5. Команда — 10 баллов</strong></p>
+      <p><strong>6. Полевые доказательства — 10 баллов</strong></p>
+      <p style="margin-top:12px"><strong>Интерпретация:</strong> 70–100 баллов — можно работать. 50–69 — осторожно, уточнить. Менее 50 — искать дальше.</p>
+      <h3>10 красных меток при общении со строителями</h3>
+      <ul>
+        <li>Скидка 20–30% за крупную предоплату</li>
+        <li>«Сделаем без проекта, так быстрее»</li>
+        <li>Размытая смета: «тёплый контур — 8 млн»</li>
+        <li>Запрет на посещение действующих объектов</li>
+        <li>«У нас все бригады универсалы»</li>
+        <li>Агрессия к технадзору и независимой экспертизе</li>
+        <li>Подмена понятий («кирпичный дом» оказывается каркасом)</li>
+        <li>Системная спешка: «подписывайте сегодня, завтра подорожает»</li>
+        <li>Нет гарантийных обязательств и регламентов сервиса</li>
+        <li>«Мы лучше всех» и абсолютные обещания</li>
+      </ul>
+      <blockquote>Один красный флаг — повод задуматься. Два–три — я выхожу.</blockquote>
+      <h3>Чек-лист перед подписанием договора</h3>
+      <ul>
+        <li>Документы компании: устав, выписка, ИНН/КПП, полномочия подписанта</li>
+        <li>Проектная документация до договора: АР, КР, инженерия с схемами и спецификациями</li>
+        <li>Смета с разделёнными позициями «материал/работа» и указанными производителями</li>
+        <li>Этапы оплаты привязаны к актам КС-2/КС-3, без «жирной» предоплаты</li>
+        <li>Календарный график с критическими вехами и ответственностью за срыв</li>
+        <li>Любые правки — только через доп-соглашение с пересчётом сроков и бюджета</li>
+        <li>Журналы работ, акты скрытых работ, фотофиксация этапов</li>
+        <li>Гарантийные сроки по конструктиву, кровле, инженерии с регламентом обращений</li>
+      </ul>
+    `
+  },
+  {
+    tag: '🏠 Глава 4',
+    title: 'Вторичный рынок загородных домов',
+    html: `
+      <h3>Почему готовые дома часто продают с проблемами</h3>
+      <p>На первый взгляд, купить готовый дом — мечта. Зайти, поставить мебель, вдохнуть запах свежей отделки и сказать: «Мы дома». Но за этой картинкой слишком часто прячется другой сюжет.</p>
+      <p>Большая часть домов, которые продаются на вторичке, — не семейные гнёзда, а незакрытые проекты. Их строили не для жизни, а для продажи. Инвестор, который хотел «провернуть сделку», сэкономил на каждом шаге: фундамент, инженерия, материалы, люди.</p>
+      <blockquote>Хороший дом не продают. Продают тот, который не зашёл — по месту, по инженерии, по атмосфере. Или дом, где ошибки уже проявились, и новый владелец должен их оплатить.</blockquote>
+      <h3>Как распознать «красивый фасад» и гнилую основу</h3>
+      <p>Простые маркеры, которые сразу заметны опытному взгляду:</p>
+      <ul>
+        <li>Дерево естественной влажности — оно набрало влагу, и после первой зимы даст трещины</li>
+        <li>Сырые чердаки и подполы — нет вентиляции, значит через год появится грибок</li>
+        <li>Фундамент без геологии — трещины, перекосы, просевшая отмостка</li>
+        <li>«Кирпичный дом», который оказывается каркасом с облицовкой</li>
+        <li>Непродуманные коммуникации — канализация идёт под малым уклоном, вода замерзает, котёл стоит не там</li>
+      </ul>
+      <p>Продавец никогда не покажет это сам. Наоборот — подаст аромат кофе, включит камин и расскажет, как «дом строили для себя». Эта фраза — главный маркетинговый трюк вторички. «Строили для себя» в 95% случаев означает «строили как получилось, но теперь хотим вернуть деньги».</p>
+      <h3>Принцип честной покупки с технадзором</h3>
+      <p>Проверять дом нужно не риэлтором, а технадзором. Риэлтор продаёт историю. Технадзор — реальность.</p>
+      <p>Последовательность:</p>
+      <ul>
+        <li>Найдите специалиста с опытом в строительном контроле — инженера, который работал на стройке руками</li>
+        <li>Выезжайте на осмотр вместе. Он берёт с собой уровень, тепловизор, влагомер, эндоскоп, лазерную рулетку</li>
+        <li>Делайте фотофиксацию всех узлов: цоколь, чердак, стыки кровли, узлы коммуникаций</li>
+        <li>Получите отчёт — не «понравилось/не понравилось», а техническое заключение</li>
+      </ul>
+      <blockquote>Один день такого осмотра может сэкономить годы ремонта и миллионы рублей. И если инженер говорит «нет» — не спорьте. Уйдите. Это не ваш дом, каким бы красивым он ни казался.</blockquote>
+    `
+  },
+  {
+    tag: '🏛️ Глава 5',
+    title: 'Архитектура, планировка и жизнь',
+    html: `
+      <h3>Почему архитектор важнее подрядчика</h3>
+      <p>В строительстве все привыкли искать подрядчика. Но дом начинается не со строителей, а с архитектора. Подрядчик воплощает, архитектор создаёт смысл.</p>
+      <p>Я видел десятки историй, когда заказчик экономил на проекте, думая, что «архитектор — это про картинку». А потом на участке начинались мучения: дверь открывается не туда, где заходишь с пакетами; кухня не видит закат, зато смотрит на соседский забор; детская — над котельной; а терраса, где мечтали пить утренний кофе, оказывается в тени весь день.</p>
+      <blockquote>Архитектор — это человек, который не просто рисует дом, а переводит ваш образ жизни на язык пространства. Он спрашивает не «какой фасад хотите», а «во сколько вы встаёте, где пьёте кофе, когда приходите домой».</blockquote>
+      <p>Без архитектора дом остаётся случайным. С архитектором — он становится точным, словно костюм, сшитый по меркам, а не купленный на распродаже.</p>
+      <h3>Сценарии жизни: как дом отражает привычки семьи</h3>
+      <p>Дом — это не стены и крыша. Это сценарий, по которому живёт семья. Возьмите лист бумаги, нарисуйте план дома — и цветными линиями отметьте, как вы будете двигаться в разные дни: красной — будний день, синей — выходной, зелёной — когда к вам приезжают гости.</p>
+      <p>Сразу видно, где узкие места. Вот здесь вы утром сталкиваетесь у двери в ванну. Вот здесь ребёнок идёт в школу через кухню, где уже жарится бекон. А вот тут бабушка проходит через гостиную, когда вы ведёте зум-встречу.</p>
+      <blockquote>Планировка — это не математика, это психология движения. Комфорт создаётся не метрами, а логикой пути.</blockquote>
+      <h3>Ландшафт и участок как продолжение дома</h3>
+      <p>Дом — это не объект на земле, это часть земли. Мы часто начинаем с дома, забывая про участок. А нужно наоборот: сначала понять, где солнце, ветер, склон, соседские окна; увидеть деревья, которые дают тень; услышать, откуда идёт шум дороги, а где тишина.</p>
+      <p>Архитектор должен выехать на участок, прежде чем сделать первый эскиз. Только там он поймёт, как дом должен «сесть» на землю. Где крыльцо, чтобы встречало утренний свет. Где терраса, чтобы ловить вечер. Где баня, чтобы дым не шёл в окна спальни.</p>
+      <p>Ландшафт — это не про клумбы и газон. Это про дыхание пространства. Когда участок спроектирован вместе с домом, он живёт как единое целое.</p>
+    `
+  },
+  {
+    tag: '💰 Глава 6',
+    title: 'Деньги, которых не видно',
+    html: `
+      <h3>Реальные затраты на дом, участок и благоустройство</h3>
+      <p>Большинство людей, которые впервые решают строить дом, мыслят просто: «Вот земля, вот проект, вот смета — и мы знаем бюджет». Но это иллюзия.</p>
+      <blockquote>Я не знаю ни одного человека, кто вложился ровно в ту сумму, которую планировал.</blockquote>
+      <p>Сначала кажется: участок — 10 миллионов, дом — 15. А потом приходит реальность: септик, скважина, дренаж, подвод электричества, ландшафт, площадки, дорожки, забор, освещение, навес, мебель, техника. И каждый пункт кажется мелочью — пока не сложишь всё вместе.</p>
+      <p>Когда я впервые посчитал свой дом, оказалось, что земля и коробка составляют только <strong>30% от общих вложений</strong>. Остальные 70% — это то, что делает дом пригодным для жизни.</p>
+      <h3>Что скрывают маркетинговые «цены за квадрат»</h3>
+      <p>На рынке любят цифры: «Построим дом под ключ за 50 тысяч рублей за квадрат». Эта формулировка — самая опасная приманка. За ней скрывается не дом, а смета на отдельные работы без инженерии, отделки и жизни.</p>
+      <p>В реальности цена квадрата дома, в котором можно жить, начинается не от 50 и даже не со 100 тысяч, а намного выше. Потому что квадрат — это не только стены. Это инженерия, коммуникации, вентиляция, утепление, фундамент, лестницы, окна, двери, отделка, сантехника, освещение, мебель.</p>
+      <h3>Почему «коробка» — это не дом</h3>
+      <p>На рынке принято говорить: «Мы сдаём тёплый контур». Это и есть коробка: стены, крыша, окна, двери. Снаружи выглядит законченно, но жить там невозможно.</p>
+      <blockquote>Коробка — это обещание. Дом — это выполненное обещание.</blockquote>
+      <p>Чтобы превратить коробку в жизнь, нужно пройти ещё десятки этапов: внутренняя инженерия, отопление, вентиляция, отделка, освещение, мебель, бытовые мелочи. Это сотни решений, каждое из которых требует денег, времени и внимания.</p>
+      <p>Я видел людей, которые остановились на этапе коробки. Стоит красивый фасад, крыша блестит, окна закрыты. Но внутри — тишина и пыль. Потому что деньги кончились, силы кончились, а вдохновение — ушло. Дом без жизни превращается в памятник несбывшемуся плану.</p>
+      <p>Деньги, которых не видно — это и есть настоящая цена дома. Не та, что в рекламе, а та, что в вашей жизни. И если учитывать её с начала, вы не разочаруетесь в конце.</p>
+    `
+  },
+  {
+    tag: '😔 Глава 7',
+    title: '5 главных сожалений владельцев домов',
+    html: `
+      <h3>1. Бюджет вышел в 3 раза больше</h3>
+      <p>Почти все, кто построил дом, произносили одну и ту же фразу: «Мы думали, выйдет в пять миллионов. Вышло в пятнадцать.» Это не шутка — это правило. Почти никто не попадает в запланированную сумму.</p>
+      <p>Проблема не в деньгах, а в иллюзии, что всё можно посчитать заранее. За каждым пунктом скрыты мелочи: фурнитура, инженерные мелочи, мебель, свет, благоустройство, бытовка, забор, терраса, грунт, полив, техника. Каждая мелочь — плюс 50 тысяч. А мелочей — сотни.</p>
+      <blockquote>Настоящий дом строится только тогда, когда у вас есть ещё 30% сверху — для непредвиденного, для жизни, для вдохновения.</blockquote>
+      <h3>2. Два этажа — лишние</h3>
+      <p>Каждый второй владелец загородного дома через год говорит: «Следующий дом я построю одноэтажный.» Пока смотришь проекты, лестница кажется красивой деталью — символом уюта и статуса. Но когда начинаешь жить, она превращается в барьер между членами семьи.</p>
+      <p>На втором этаже — спальни, на первом — жизнь. Через год оказывается, что наверх никто не поднимается, а половина дома стоит пустой и холодной. Если участок позволяет — выбирайте горизонт, не высоту. Одноэтажный дом проще, теплее, дешевле в эксплуатации, и главное — в нём вы будете жить вместе, а не на разных уровнях.</p>
+      <h3>3. Сэкономили на специалистах</h3>
+      <p>Одна из самых горьких ошибок — сэкономить на проектировщике, архитекторе или технадзоре. Люди платят миллионы за стройку, но жалеют сто тысяч на того, кто защитит эти миллионы.</p>
+      <p>«Да зачем мне архитектор, у меня есть картинка», «Зачем технадзор, я сам всё посмотрю» — эти фразы стоят потом в три раза дороже. Технадзор — это не лишний человек, а глаза заказчика, когда заказчик на работе. Архитектор — это голос разума, который видит на три шага вперёд. Экономия на специалистах — это всегда отсроченная боль.</p>
+      <h3>4. Планировка сделана неудобно</h3>
+      <p>Дверь открывается не туда, где заходишь с пакетами. Кухня не видит закат, зато смотрит на соседский забор. Детская — над котельной. А терраса, где мечтали пить утренний кофе, оказывается в тени весь день.</p>
+      <p>Эти ошибки не видны на чертеже, пока не начинаешь жить. Планировка — это сценарий жизни. Она должна подстраиваться под семью, а не наоборот. Инженерия — нервная система дома: если она продумана плохо, жизнь превращается в компромисс между комфортом и раздражением.</p>
+      <h3>5. Нет проекта и вентиляции</h3>
+      <p>Самое частое «потом» — это слово «вентиляция». Вспоминают о ней, когда в доме нечем дышать. Современные дома делают слишком герметичными: тёплые, экономичные, энергоэффективные — и задушенные. Без приточки, без вытяжки, без движения воздуха.</p>
+      <blockquote>Вентиляция — это не роскошь, а базовая функция живого дома. Она должна проектироваться вместе с архитектурой, а не «потом».</blockquote>
+      <p>Каждое из этих сожалений — не про стройку, а про осознанность. Дом — это зеркало наших решений. Но у этой истории есть светлая сторона: все эти ошибки можно не повторять. Можно построить дом с первого раза — если не гнаться за «квадратами» и скидками, а строить из понимания, как вы хотите жить.</p>
+    `
+  },
+  {
+    tag: '🌿 Глава 8',
+    title: 'Постоянное проживание или дача?',
+    html: `
+      <h3>Разница между ПМЖ и домом выходного дня</h3>
+      <p>Первое, с чего стоит начать, — честный ответ на вопрос: «Зачем мне этот дом?» Не «в принципе для жизни», а конкретно — я хочу здесь жить постоянно или приезжать иногда? Эта формулировка определяет всё: бюджет, инженерные решения, материалы, даже выбор участка.</p>
+      <p>Ошибаются как раз те, кто не задаёт этот вопрос в начале. Строят как «для жизни», а потом приезжают раз в месяц; или наоборот — берут «дачу», а хотят зимовать и удивляются, почему дом не держит тепло.</p>
+      <h3>Дом для ПМЖ vs дом выходного дня</h3>
+      <p><strong>Дом для ПМЖ</strong> — это другая философия. В нём важна не только уютность, но и стабильность: вода, отопление, вентиляция, доступность инфраструктуры, интернет, дороги, безопасность. Ты должен жить без ощущения, что «что-то временно».</p>
+      <p><strong>Дом выходного дня</strong> — история про отдых. В нём важна простота. Он может быть компактным, менее энергоэффективным, с минимальным набором инженерии, потому что главная цель — выдохнуть, а не обслуживать систему.</p>
+      <blockquote>Проблема начинается, когда человек пытается совместить несовместимое: сделать «дачу с функцией дома» или «дом, но подешевле, как дачу». Получается нечто среднее — ни отдых, ни жизнь.</blockquote>
+      <h3>Отопление, материалы, инфраструктура</h3>
+      <p><strong>Отопление.</strong> В ПМЖ оно должно быть автоматическим, стабильным и энергоэффективным — газ, электричество, тепловой насос, комбинированные системы. Для дачи достаточно простого электрического или печного обогрева с функцией поддержания +7°C, чтобы ничего не замёрзло.</p>
+      <p><strong>Материалы.</strong> Для постоянного проживания — инертные, стабильные, с правильной тепло-аккумуляцией: кирпич, газобетон, клеёный брус, СИП с утеплением. Для дачи — лёгкие конструкции, быстровозводимые, где главное — скорость и экономия, а не долговечность в 100 лет.</p>
+      <p><strong>Инженерия.</strong> В ПМЖ должны быть: скважина, септик, вентиляция, система отвода воды, дренаж, защита от замерзания, резервное электропитание, качественное отопление с автоматикой. Для дачи — минимальный набор, который обеспечит базовый комфорт в сезон использования.</p>
+      <p>Когда вы понимаете свой формат, вы начинаете проектировать не стены, а сценарий. И тогда появляются настоящие мелочи, которые решают всё: скамейка под яблоней, окно, в которое попадает тень от сосны, вид на пруд из кухни, и тот самый угол, где летом хочется пить чай и молчать.</p>
+    `
+  }
+];
+
+let currentChapter = 0;
+
+function openChapter(idx) {
+  currentChapter = idx;
+  renderChapter();
+  document.getElementById('chapterModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeChapter() {
+  document.getElementById('chapterModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('chapterModal')) closeChapter();
+}
+
+function renderChapter() {
+  const ch = chaptersData[currentChapter];
+  document.getElementById('modalTag').textContent = ch.tag;
+  document.getElementById('modalTitle').textContent = ch.title;
+  document.getElementById('modalBody').innerHTML = ch.html;
+  document.getElementById('modalPrev').disabled = currentChapter === 0;
+  document.getElementById('modalNext').disabled = currentChapter === chaptersData.length - 1;
+  document.getElementById('modalBody').scrollTop = 0;
+}
+
+function prevChapter() { if (currentChapter > 0) { currentChapter--; renderChapter(); } }
+function nextChapter() { if (currentChapter < chaptersData.length - 1) { currentChapter++; renderChapter(); } }
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeChapter(); });
+</script>
+</body>
+</html>
